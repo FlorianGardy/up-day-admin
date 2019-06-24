@@ -8,11 +8,7 @@ const User = ({ updateUserList, users }) => {
     updateUserList();
   }, [updateUserList]);
 
-  return (
-    <div>
-      <UserView users={users} />
-    </div>
-  );
+  return <UserView users={users} />;
 };
 
 const mapDispatchToPros = dispatch => {

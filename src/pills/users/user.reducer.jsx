@@ -1,10 +1,12 @@
+import { UPDATE_USER_LIST } from "./user.action";
+
 const initalState = {
   userList: []
 };
 
 export default function UserReducer(state = initalState, action) {
   switch (action.type) {
-    case "@user/UPDATE_USER":
+    case UPDATE_USER_LIST:
       return { ...state, userList: action.value };
     default:
       return state;
