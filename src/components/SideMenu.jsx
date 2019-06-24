@@ -1,7 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SideMenu = () => {
-  return <div>Hello side Menu</div>;
+  return (
+    <div style={{ width: "20%" }}>
+      <Link to="/">Accueil</Link>
+      <Link to="/users">Utilisateurs</Link>
+    </div>
+  );
 };
 
 export default SideMenu;
