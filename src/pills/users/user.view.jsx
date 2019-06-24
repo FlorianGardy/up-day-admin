@@ -3,11 +3,11 @@ import UserRow from "../../components/UserRow";
 
 const UserView = ({ users }) => {
   return (
-    <div>
+    <>
       {users.map(user => (
-        <UserRow name={user.name} />
+        <UserRow {...user} />
       ))}
-    </div>
+    </>
   );
 };
 
