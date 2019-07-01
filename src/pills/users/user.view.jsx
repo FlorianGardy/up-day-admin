@@ -4,8 +4,8 @@ import UserRow from "../../components/UserRow";
 const UserView = ({ users }) => {
   return (
     <>
-      {users.map(user => (
-        <UserRow {...user} />
+      {users.reverse().map((user, i) => (
+        <UserRow key={i} {...user} />
       ))}
     </>
   );
