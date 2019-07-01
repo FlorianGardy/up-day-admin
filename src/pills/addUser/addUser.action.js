@@ -16,7 +16,6 @@ export const updateAdmin = isAdmin => {
 export const updateRole = role => {
   return { type: UPDATE_ROLE, role };
 };
-
 export const resetAddUser = () => {
   return { type: RESET };
 };

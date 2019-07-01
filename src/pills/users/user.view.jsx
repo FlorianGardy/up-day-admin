@@ -1,11 +1,11 @@
 import React from "react";
 import UserRow from "../../components/UserRow";
 
-const UserView = ({ users }) => {
+const UserView = ({ users, deleteUser }) => {
   return (
     <>
       {users.reverse().map((user, i) => (
-        <UserRow key={i} {...user} />
+        <UserRow key={i} {...user} deleteUser={deleteUser} />
       ))}
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserRow = ({ name, id, password, token, role }) => {
+const UserRow = ({ name, id, password, token, role, deleteUser }) => {
   return (
     <div>
       <h1>Name : {name}</h1>
@@ -8,6 +8,12 @@ const UserRow = ({ name, id, password, token, role }) => {
       <p>Son mot de pass est : {password}</p>
       <p>cet utilisateur est un {role}</p>
       <p>Son Token est : {token}</p>
+      <button
+        style={{ background: "red", color: "white" }}
+        onClick={() => deleteUser(id)}
+      >
+        DELETE
+      </button>
     </div>
   );
 };
