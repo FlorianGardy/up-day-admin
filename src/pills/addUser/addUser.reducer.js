@@ -2,7 +2,8 @@ import {
   UPDATE_NAME,
   UPDATE_PASS,
   UPDATE_ADMIN,
-  UPDATE_ROLE
+  UPDATE_ROLE,
+  RESET
 } from "./addUser.action";
 
 const initalState = {
@@ -22,6 +23,8 @@ export default function AddUserReducer(state = initalState, action) {
       return { ...state, isAdmin: action.isAdmin };
     case UPDATE_ROLE:
       return { ...state, role: action.role };
+    case RESET:
+      return { ...initalState };
     default:
       return state;
   }
