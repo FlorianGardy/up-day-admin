@@ -2,6 +2,7 @@ export const UPDATE_NAME = "@addUser/UPDATE_NAME";
 export const UPDATE_PASS = "@addUser/UPDATE_PASS";
 export const UPDATE_ADMIN = "@addUser/UPDATE_ADMIN";
 export const UPDATE_ROLE = "@addUser/UPDATE_ROLE";
+export const RESET = "@addUser/RESET";
 
 export const updateName = name => {
   return { type: UPDATE_NAME, name };
@@ -14,4 +15,8 @@ export const updateAdmin = isAdmin => {
 };
 export const updateRole = role => {
   return { type: UPDATE_ROLE, role };
+};
+
+export const resetAddUser = () => {
+  return { type: RESET };
 };

@@ -5,7 +5,8 @@ import {
   updateAdmin,
   updateName,
   updatePass,
-  updateRole
+  updateRole,
+  resetAddUser
 } from "./addUser.action";
 import { getuserList } from "../users/user.action";
 import AddUserView from "./addUser.view";
@@ -19,7 +20,8 @@ const AddUser = ({
   role,
   updateRole,
   getUserList,
-  isAdmin
+  isAdmin,
+  resetAddUser
 }) => {
   const [add, setAdd] = useState(false);
 
@@ -45,6 +47,7 @@ const AddUser = ({
     };
     await axios.request(config);
     getUserList();
+    resetAddUser();
   };
 
   if (!add) {
@@ -60,6 +63,7 @@ const AddUser = ({
       updatePass={updatePass}
       updateAdmin={updateAdmin}
       isAdmin={isAdmin}
+      role={role}
     />
   );
 };
@@ -79,7 +83,8 @@ const mapDispatchToProps = dispatch => {
     updateAdmin: isAdmin => dispatch(updateAdmin(isAdmin)),
     updatePass: password => dispatch(updatePass(password)),
     updateRole: role => dispatch(updateRole(role)),
-    getUserList: () => dispatch(getuserList())
+    getUserList: () => dispatch(getuserList()),
+    resetAddUser: () => dispatch(resetAddUser())
   };
 };
 export default connect(
