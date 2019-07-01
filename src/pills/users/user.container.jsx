@@ -2,13 +2,18 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getuserList } from "./user.action";
 import UserView from "./user.view";
+import Axios from "axios";
 
 const User = ({ updateUserList, users }) => {
   useEffect(() => {
     updateUserList();
   }, [updateUserList]);
 
-  return <UserView users={users} />;
+  const deleteUser = id => {
+    return Axios.delete(`/user/${id}`);
+  };
+
+  return <UserView users={users} deleteUser={deleteUser} />;
 };
 
 const mapDispatchToPros = dispatch => {
