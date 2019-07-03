@@ -29,7 +29,7 @@ const AddUser = ({
     if (isAdmin) {
       updateRole("admin");
     } else {
-      updateRole("user");
+      updateRole("standard");
     }
   }, [updateRole, isAdmin]);
 
