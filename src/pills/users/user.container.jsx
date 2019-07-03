@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getuserList } from "./user.action";
 import UserView from "./user.view";
@@ -9,11 +9,22 @@ const User = ({ updateUserList, users }) => {
     updateUserList();
   }, [updateUserList]);
 
-  const deleteUser = id => {
-    return Axios.delete(`/user/${id}`);
+  const [filterValue, setFilterValue] = useState("");
+
+  const deleteUser = uuid => {
+    return Axios.delete(`/users/${uuid}`);
   };
 
-  return <UserView users={users} deleteUser={deleteUser} />;
+  return (
+    <>
+      <UserView
+        users={users}
+        deleteUser={deleteUser}
+        handleFilter={filterValue => setFilterValue(filterValue)}
+        filterValue={filterValue}
+      />
+    </>
+  );
 };
 
 const mapDispatchToPros = dispatch => {

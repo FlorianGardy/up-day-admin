@@ -1,12 +1,19 @@
 import React from "react";
 import UserRow from "../../components/UserRow";
 
-const UserView = ({ users, deleteUser }) => {
+const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
   return (
     <>
-      {users.reverse().map((user, i) => (
-        <UserRow key={i} {...user} deleteUser={deleteUser} />
-      ))}
+      <label>filtre:</label>
+      <input value={filterValue} onChange={e => handleFilter(e.target.value)} />
+      {users
+        .filter(user =>
+          user["name"].toLowerCase().includes(filterValue.toLowerCase())
+        )
+        .reverse()
+        .map((user, i) => (
+          <UserRow key={i} {...user} deleteUser={deleteUser} />
+        ))}
     </>
   );
 };
