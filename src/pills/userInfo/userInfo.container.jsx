@@ -8,7 +8,9 @@ const UserInfoContainer = ({ id, fetchUserData, userEvents }) => {
     fetchUserData(id);
   }, [fetchUserData, id]);
 
-  return <UserInfoView id={id} events={userEvents} />;
+  id = 1; // FIX to get events (waiting for auth)
+
+  return <UserInfoView id={id} />;
 };
 
 const mapStateToProps = state => {
