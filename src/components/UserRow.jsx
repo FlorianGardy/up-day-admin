@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const UserRow = ({ name, uuid, password, token, role, deleteUser }) => {
   return (
@@ -19,6 +20,15 @@ const UserRow = ({ name, uuid, password, token, role, deleteUser }) => {
       </button>
     </div>
   );
+};
+
+UserRow.propTypes = {
+  name: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  deleteUser: PropTypes.func.isRequired
 };
 
 export default UserRow;

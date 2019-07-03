@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AddUserView = ({
   name,
@@ -19,7 +20,7 @@ const AddUserView = ({
         onChange={e => updateName(e.target.value)}
       />
       <input
-        type="text"
+        type="password"
         placeholder="Mot de passe"
         value={password}
         onChange={e => updatePass(e.target.value)}
@@ -33,6 +34,17 @@ const AddUserView = ({
       <input type="submit" />
     </form>
   );
+};
+
+AddUserView.propTypes = {
+  name: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  updateName: PropTypes.func.isRequired,
+  updatePass: PropTypes.func.isRequired,
+  updateAdmin: PropTypes.func.isRequired,
+  handleRegister: PropTypes.func.isRequired
 };
 
 export default AddUserView;

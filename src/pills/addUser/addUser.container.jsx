@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { connect } from "react-redux";
 import {
@@ -87,6 +88,20 @@ const mapDispatchToProps = dispatch => {
     resetAddUser: () => dispatch(resetAddUser())
   };
 };
+
+AddUser.propTypes = {
+  name: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  updateName: PropTypes.func.isRequired,
+  updatePass: PropTypes.func.isRequired,
+  updateAdmin: PropTypes.func.isRequired,
+  updateRole: PropTypes.func.isRequired,
+  getUserList: PropTypes.func.isRequired,
+  resetAddUser: PropTypes.func.isRequired
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
