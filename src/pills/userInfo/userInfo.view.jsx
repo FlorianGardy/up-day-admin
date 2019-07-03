@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import EventCarousel from "../../components/EventCarousel";
 
 const UserInfoView = ({ id }) => {
@@ -8,6 +9,10 @@ const UserInfoView = ({ id }) => {
       <EventCarousel />
     </div>
   );
+};
+
+UserInfoView.propTypes = {
+  id: PropTypes.string.isRequired
 };
 
 export default UserInfoView;

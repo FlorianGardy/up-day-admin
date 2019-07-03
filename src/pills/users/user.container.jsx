@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getuserList } from "./user.action";
 import UserView from "./user.view";
@@ -36,6 +37,11 @@ const mapDispatchToPros = dispatch => {
 const mapStateToProps = state => ({
   users: state.UserReducer.userList
 });
+
+User.propTypes = {
+  users: PropTypes.string.isRequired,
+  updateUserList: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

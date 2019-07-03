@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchUserData } from "./userInfo.action";
 import UserInfoView from "./userInfo.view";
@@ -23,6 +24,12 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchUserData: id => dispatch(fetchUserData(id))
   };
+};
+
+UserInfoContainer.propTypes = {
+  id: PropTypes.string.isRequired,
+  fetchUserData: PropTypes.func.isRequired,
+  userEvents: PropTypes.array.isRequired
 };
 
 export default connect(

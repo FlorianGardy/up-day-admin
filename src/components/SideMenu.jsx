@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SideMenu = ({ history }) => {
+const SideMenu = () => {
   return (
     <div style={{ width: "10%", display: "flex", flexDirection: "column" }}>
       <Link to="/">Accueil</Link>

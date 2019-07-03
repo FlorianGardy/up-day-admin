@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import UserRow from "../../components/UserRow";
 
 const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
@@ -16,6 +17,13 @@ const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
         ))}
     </>
   );
+};
+
+UserView.propTypes = {
+  users: PropTypes.string.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+  filterValue: PropTypes.func.isRequired
 };
 
 export default UserView;

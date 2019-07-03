@@ -1,8 +1,9 @@
 import React from "react";
 import UserInfoContainer from "../pills/userInfo/userInfo.container";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const UserPage = ({ match, history }) => {
+const UserPage = ({ match }) => {
   return (
     <div>
       <Link to="/users">
@@ -11,6 +12,10 @@ const UserPage = ({ match, history }) => {
       <UserInfoContainer id={match.params.id} />
     </div>
   );
+};
+
+UserPage.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default UserPage;
