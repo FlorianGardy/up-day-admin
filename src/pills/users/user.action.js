@@ -1,4 +1,5 @@
 import getUserFromApi from "../../functions/getUserFromApi";
+import Axios from "axios";
 
 export const UPDATE_USER_LIST = "@user/UPDATE_USER_LIST";
 
@@ -12,3 +13,15 @@ export function getuserList() {
     dispatch(updateUser(userList));
   };
 }
+
+export function deleteUserFromDB(uuid) {
+  return async dispatch => {
+    await deleteUser(uuid);
+    const userList = await getUserFromApi();
+    dispatch(updateUser(userList));
+  };
+}
+
+const deleteUser = uuid => {
+  return Axios.delete(`http://localhost:3030/users/${uuid}`);
+};

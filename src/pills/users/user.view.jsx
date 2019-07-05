@@ -13,7 +13,7 @@ const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
         )
         .reverse()
         .map((user, i) => (
-          <UserRow key={i} {...user} deleteUser={deleteUser} />
+          <UserRow key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
         ))}
     </>
   );

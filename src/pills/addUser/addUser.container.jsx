@@ -11,6 +11,12 @@ import {
 } from "./addUser.action";
 import { getuserList } from "../users/user.action";
 import AddUserView from "./addUser.view";
+import {
+  getAddUserName,
+  getAddUserPassword,
+  getAddUserRole,
+  getAddUserIsAdmin
+} from "./addUser.selector";
 
 const AddUser = ({
   name,
@@ -71,10 +77,10 @@ const AddUser = ({
 
 const mapStateToProps = store => {
   return {
-    name: store.AddUserReducer.name,
-    password: store.AddUserReducer.password,
-    role: store.AddUserReducer.role,
-    isAdmin: store.AddUserReducer.isAdmin
+    name: getAddUserName(store),
+    password: getAddUserPassword(store),
+    role: getAddUserRole(store),
+    isAdmin: getAddUserIsAdmin(store)
   };
 };
 
