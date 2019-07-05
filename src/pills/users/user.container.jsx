@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 });
 
 User.propTypes = {
-  users: PropTypes.string.isRequired,
+  users: PropTypes.array.isRequired,
   updateUserList: PropTypes.func.isRequired
 };
 

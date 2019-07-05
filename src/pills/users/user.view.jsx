@@ -20,10 +20,10 @@ const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
 };
 
 UserView.propTypes = {
-  users: PropTypes.string.isRequired,
+  users: PropTypes.array.isRequired,
   deleteUser: PropTypes.func.isRequired,
   handleFilter: PropTypes.func.isRequired,
-  filterValue: PropTypes.func.isRequired
+  filterValue: PropTypes.string.isRequired
 };
 
 export default UserView;
