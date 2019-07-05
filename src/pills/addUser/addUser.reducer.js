@@ -9,7 +9,7 @@ import {
 const initalState = {
   name: "",
   password: "",
-  role: "user",
+  role: "standard",
   isAdmin: false
 };
 
