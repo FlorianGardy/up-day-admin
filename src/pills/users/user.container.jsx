@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getuserList } from "./user.action";
+import { getuserList, deleteUserFromDB } from "./user.action";
 import UserView from "./user.view";
-import Axios from "axios";
+import { getUserList } from "./user.selector";
 
-const User = ({ updateUserList, users }) => {
+const User = ({ updateUserList, deleteUserFromDB, users }) => {
   useEffect(() => {
     updateUserList();
   }, [updateUserList]);
 
   const [filterValue, setFilterValue] = useState("");
 
-  const deleteUser = uuid => {
-    return Axios.delete(`/users/${uuid}`);
-  };
-
   return (
     <>
       <UserView
         users={users}
-        deleteUser={deleteUser}
+        deleteUser={uuid => deleteUserFromDB(uuid)}
         handleFilter={filterValue => setFilterValue(filterValue)}
         filterValue={filterValue}
       />
@@ -30,12 +26,13 @@ const User = ({ updateUserList, users }) => {
 
 const mapDispatchToPros = dispatch => {
   return {
-    updateUserList: () => dispatch(getuserList())
+    updateUserList: () => dispatch(getuserList()),
+    deleteUserFromDB: uuid => dispatch(deleteUserFromDB(uuid))
   };
 };
 
 const mapStateToProps = state => ({
-  users: state.UserReducer.userList
+  users: getUserList(state)
 });
 
 User.propTypes = {
