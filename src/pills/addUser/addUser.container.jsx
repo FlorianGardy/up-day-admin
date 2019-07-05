@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import {
   updateAdmin,
   updateName,
+  updateEmail,
   updatePass,
   updateRole,
   resetAddUser
@@ -15,12 +16,15 @@ import {
   getAddUserName,
   getAddUserPassword,
   getAddUserRole,
-  getAddUserIsAdmin
+  getAddUserIsAdmin,
+  getAddUserEmail
 } from "./addUser.selector";
 
 const AddUser = ({
   name,
+  email,
   password,
+  updateEmail,
   updateName,
   updatePass,
   updateAdmin,
@@ -40,7 +44,7 @@ const AddUser = ({
     }
   }, [updateRole, isAdmin]);
 
-  const handleRegister = async (name, password, role) => {
+  const handleRegister = async (name, password, role, email) => {
     setAdd(false);
     const config = {
       method: "POST",
@@ -49,6 +53,7 @@ const AddUser = ({
       data: {
         name,
         password,
+        email,
         role
       }
     };
@@ -64,9 +69,11 @@ const AddUser = ({
   return (
     <AddUserView
       name={name}
+      email={email}
       password={password}
       handleRegister={handleRegister}
       updateName={updateName}
+      updateEmail={updateEmail}
       updatePass={updatePass}
       updateAdmin={updateAdmin}
       isAdmin={isAdmin}
@@ -79,6 +86,7 @@ const mapStateToProps = store => {
   return {
     name: getAddUserName(store),
     password: getAddUserPassword(store),
+    email: getAddUserEmail(store),
     role: getAddUserRole(store),
     isAdmin: getAddUserIsAdmin(store)
   };
@@ -87,6 +95,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     updateName: name => dispatch(updateName(name)),
+    updateEmail: email => dispatch(updateEmail(email)),
     updateAdmin: isAdmin => dispatch(updateAdmin(isAdmin)),
     updatePass: password => dispatch(updatePass(password)),
     updateRole: role => dispatch(updateRole(role)),

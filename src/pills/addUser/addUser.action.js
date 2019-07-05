@@ -1,4 +1,5 @@
 export const UPDATE_NAME = "@addUser/UPDATE_NAME";
+export const UPDATE_EMAIL = "@addUser/UPDATE_EMAIL";
 export const UPDATE_PASS = "@addUser/UPDATE_PASS";
 export const UPDATE_ADMIN = "@addUser/UPDATE_ADMIN";
 export const UPDATE_ROLE = "@addUser/UPDATE_ROLE";
@@ -6,6 +7,9 @@ export const RESET = "@addUser/RESET";
 
 export const updateName = name => {
   return { type: UPDATE_NAME, name };
+};
+export const updateEmail = email => {
+  return { type: UPDATE_EMAIL, email };
 };
 export const updatePass = password => {
   return { type: UPDATE_PASS, password };
