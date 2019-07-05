@@ -16,7 +16,8 @@ import {
   getAddUserName,
   getAddUserPassword,
   getAddUserRole,
-  getAddUserIsAdmin
+  getAddUserIsAdmin,
+  getAddUserEmail
 } from "./addUser.selector";
 import AddUserReducer from "./addUser.reducer";
 
@@ -98,6 +99,12 @@ describe("# AddUser", () => {
         AddUserReducer: { isAdmin: true }
       };
       expect(getAddUserIsAdmin(initialStore)).toEqual(true);
+    });
+    it.only("should return mail@gmail.com as email", () => {
+      const initialStore = {
+        AddUserReducer: { email: "mail@gmail.com" }
+      };
+      expect(getAddUserEmail(initialStore)).toEqual("mail@gmail.com");
     });
   });
 });
