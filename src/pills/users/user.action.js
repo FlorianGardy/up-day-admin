@@ -3,14 +3,14 @@ import Axios from "axios";
 
 export const UPDATE_USER_LIST = "@user/UPDATE_USER_LIST";
 
-const updateUser = userList => {
-  return { type: UPDATE_USER_LIST, value: userList };
+export const updateUserList = userList => {
+  return { type: UPDATE_USER_LIST, userList };
 };
 
 export function getuserList() {
   return async dispatch => {
     const userList = await getUserFromApi();
-    dispatch(updateUser(userList));
+    dispatch(updateUserList(userList));
   };
 }
 
@@ -18,7 +18,7 @@ export function deleteUserFromDB(uuid) {
   return async dispatch => {
     await deleteUser(uuid);
     const userList = await getUserFromApi();
-    dispatch(updateUser(userList));
+    dispatch(updateUserList(userList));
   };
 }
 
