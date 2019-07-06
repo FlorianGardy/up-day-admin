@@ -19,6 +19,7 @@ import {
   getAddUserIsAdmin,
   getAddUserEmail
 } from "./addUser.selector";
+import { addUserToDb } from "../../functions/addUserToDb";
 
 const AddUser = ({
   name,
@@ -46,18 +47,7 @@ const AddUser = ({
 
   const handleRegister = async (name, password, role, email) => {
     setAdd(false);
-    const config = {
-      method: "POST",
-      baseURL: "http://localhost:3030",
-      url: "/users",
-      data: {
-        name,
-        password,
-        email,
-        role
-      }
-    };
-    await axios.request(config);
+    await addUserToDb(name, password, email, role);
     getUserList();
     resetAddUser();
   };
