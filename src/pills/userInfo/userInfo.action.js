@@ -1,17 +1,17 @@
 import Axios from "axios";
-export const UPDATE_USER_INFO = "@userInfo/UPDATE_USER_INFO";
+export const USER_EVENTS = "@userInfo/USER_EVENTS";
 
-export const updateUserInfo = userEvents => {
-  return { type: UPDATE_USER_INFO, userEvents };
+export const updateUserEvents = userEvents => {
+  return { type: USER_EVENTS, userEvents };
 };
 
 export function fetchUserData(id) {
   return async dispatch => {
-    const userEvents = await getUserInfoFromApi(id);
-    dispatch(updateUserInfo(userEvents));
+    const userEvents = await getUserEventsFromApi(id);
+    dispatch(updateUserEvents(userEvents));
   };
 }
 
-const getUserInfoFromApi = id => {
+const getUserEventsFromApi = id => {
   return Axios(`http://localhost:3030/events/${id}`).then(res => res.data);
 };
