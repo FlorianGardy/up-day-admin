@@ -3,7 +3,9 @@ import {
   updatePass,
   updateAdmin,
   updateRole,
-  resetAddUser
+  resetAddUser,
+  UPDATE_EMAIL,
+  updateEmail
 } from "./addUser.action";
 import {
   UPDATE_NAME,
@@ -61,6 +63,14 @@ describe("# AddUser", () => {
       };
       expect(resetAddUser()).toEqual(expectedAction);
     });
+    it("should create an action to update email", () => {
+      const email = "gg@gmail.com";
+      const expectedAction = {
+        type: UPDATE_EMAIL,
+        email
+      };
+      expect(updateEmail(email)).toEqual(expectedAction);
+    });
   });
 
   describe("## Reducer", () => {
@@ -72,6 +82,62 @@ describe("# AddUser", () => {
         isAdmin: false
       };
       expect(AddUserReducer(initialState, {})).toEqual(initialState);
+    });
+    it("should handle UPDATE_NAME", () => {
+      const name = "Chuck Norris";
+      expect(AddUserReducer({ name: "" }, { type: UPDATE_NAME, name })).toEqual(
+        {
+          name: "Chuck Norris"
+        }
+      );
+    });
+    it("should handle UPDATE_EMAIL", () => {
+      const email = "gaga@laydy.com";
+      expect(
+        AddUserReducer({ email: "" }, { type: UPDATE_EMAIL, email })
+      ).toEqual({
+        email: "gaga@laydy.com"
+      });
+    });
+    it("should handle UPDATE_PASS", () => {
+      const password = "monpass";
+      expect(
+        AddUserReducer({ password: "" }, { type: UPDATE_PASS, password })
+      ).toEqual({
+        password: "monpass"
+      });
+    });
+    it("should handle UPDATE_ADMIN", () => {
+      const isAdmin = true;
+      expect(
+        AddUserReducer({ isAdmin: false }, { type: UPDATE_ADMIN, isAdmin })
+      ).toEqual({
+        isAdmin: true
+      });
+    });
+    it("should handle UPDATE_ROLE", () => {
+      const role = "admin";
+      expect(
+        AddUserReducer({ role: "standart" }, { type: UPDATE_ROLE, role })
+      ).toEqual({
+        role: "admin"
+      });
+    });
+    it("should handle RESET", () => {
+      const state = {
+        name: "Chuck",
+        password: "ccNorris",
+        email: "deus@gmail.com",
+        role: "admin",
+        isAdmin: true
+      };
+      expect(AddUserReducer(state, { type: RESET })).toEqual({
+        name: "",
+        password: "",
+        email: "",
+        role: "standard",
+        isAdmin: false
+      });
     });
   });
 
@@ -100,7 +166,7 @@ describe("# AddUser", () => {
       };
       expect(getAddUserIsAdmin(initialStore)).toEqual(true);
     });
-    it.only("should return mail@gmail.com as email", () => {
+    it("should return mail@gmail.com as email", () => {
       const initialStore = {
         AddUserReducer: { email: "mail@gmail.com" }
       };
