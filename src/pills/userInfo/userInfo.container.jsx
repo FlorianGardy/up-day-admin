@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchUserData } from "./userInfo.action";
 import UserInfoView from "./userInfo.view";
+import { getUserEvents } from "./userInfo.selector";
 
 const UserInfoContainer = ({ id, fetchUserData, userEvents }) => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const UserInfoContainer = ({ id, fetchUserData, userEvents }) => {
 
 const mapStateToProps = state => {
   return {
-    userEvents: state.UserInfoReducer.userEvents
+    userEvents: getUserEvents(state)
   };
 };
 
