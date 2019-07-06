@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import EventCard from "./EventCard";
 import PropTypes from "prop-types";
+import { getUserEvents } from "../pills/userInfo/userInfo.selector";
 
 const EventCarousel = ({ userEvents: events }) => {
   const [index, setIndex] = useState(0);
@@ -45,7 +46,7 @@ const EventCarousel = ({ userEvents: events }) => {
 
 const mapStateToProps = state => {
   return {
-    userEvents: state.UserInfoReducer.userEvents
+    userEvents: getUserEvents(state)
   };
 };
 
