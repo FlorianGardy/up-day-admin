@@ -5,14 +5,12 @@ import { fetchUserData } from "./userInfo.action";
 import UserInfoView from "./userInfo.view";
 import { getUserEvents } from "./userInfo.selector";
 
-const UserInfoContainer = ({ id, fetchUserData, userEvents }) => {
+const UserInfoContainer = ({ uuid, fetchUserData, userEvents }) => {
   useEffect(() => {
-    fetchUserData(id);
-  }, [fetchUserData, id]);
+    fetchUserData(uuid);
+  }, [fetchUserData, uuid]);
 
-  id = 1; // FIX to get events (waiting for auth)
-
-  return <UserInfoView id={id} />;
+  return <UserInfoView uuid={uuid} />;
 };
 
 const mapStateToProps = state => {
@@ -23,12 +21,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserData: id => dispatch(fetchUserData(id))
+    fetchUserData: uuid => dispatch(fetchUserData(uuid))
   };
 };
 
 UserInfoContainer.propTypes = {
-  id: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
   fetchUserData: PropTypes.func.isRequired,
   userEvents: PropTypes.array.isRequired
 };

@@ -9,7 +9,7 @@ const UserPage = ({ match }) => {
       <Link to="/users">
         <button>Revenir aux utilisateurs</button>
       </Link>
-      <UserInfoContainer id={match.params.id} />
+      <UserInfoContainer uuid={match.params.uuid} />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import LoginForm from "../pages/login.page";
 
 const Main = () => {
   return (
-    <div>
+    <div style={{ width: "80%", margin: "auto" }}>
       <Route path="/" exact component={LoginForm} />
       <Route path="/users" exact component={UserPage} />
       <Route path="/user/:id" exact component={UserPageByID} />

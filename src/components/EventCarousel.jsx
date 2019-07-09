@@ -26,7 +26,7 @@ const EventCarousel = ({ userEvents: events }) => {
       }}
     >
       <button onClick={() => handleIndex(index - 1)}>&larr;</button>
-      {events
+      { events
         .sort((a, b) => {
           a = new Date(a.date);
           b = new Date(b.date);

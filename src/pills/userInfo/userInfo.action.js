@@ -5,13 +5,13 @@ export const updateUserEvents = userEvents => {
   return { type: USER_EVENTS, userEvents };
 };
 
-export function fetchUserData(id) {
+export function fetchUserData(uuid) {
   return async dispatch => {
-    const userEvents = await getUserEventsFromApi(id);
+    const userEvents = await getUserEventsFromApi(uuid);
     dispatch(updateUserEvents(userEvents));
   };
 }
 
-const getUserEventsFromApi = id => {
-  return Axios(`http://localhost:3030/events/${id}`).then(res => res.data);
+const getUserEventsFromApi = uuid => {
+  return Axios(`http://localhost:3030/events/${uuid}`).then(res => res.data);
 };
