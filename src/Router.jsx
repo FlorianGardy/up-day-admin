@@ -8,7 +8,8 @@ const AdminPanel = () => {
   return (
     <Router>
       <div style={{ width: "80%", margin: "auto" }}>
-        <Route path="/" exact component={LoginForm} />
+        <Route path="/login" exact component={LoginForm} />
+        <Route path="/" exact component={UserPage} />
         <Route path="/users" exact component={UserPage} />
         <Route path="/user/:uuid" exact component={UserPageByID} />
       </div>

@@ -1,8 +1,8 @@
 import React from "react";
-import LoginView from "../pills/Login/login.view";
+import LoginContainer from "../pills/login/login.container";
 
 const LoginForm = ({ history }) => {
-  return <LoginView history={history} />;
+  return <LoginContainer history={history} />;
 };
 
 export default LoginForm;
