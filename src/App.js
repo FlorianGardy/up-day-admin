@@ -1,8 +1,8 @@
 import React from "react";
-import AdminPanel from "./AdminPanel";
+import Router from "./Router";
 
 function App() {
-  return <AdminPanel />;
+  return <Router />;
 }
 
 export default App;
