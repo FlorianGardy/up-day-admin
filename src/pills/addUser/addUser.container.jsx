@@ -19,6 +19,7 @@ import {
   getAddUserEmail
 } from "./addUser.selector";
 import { addUserToDb } from "../../functions/addUserToDb";
+import { Button } from "semantic-ui-react";
 
 const AddUser = ({
   name,
@@ -52,22 +53,30 @@ const AddUser = ({
   };
 
   if (!add) {
-    return <button onClick={() => setAdd(true)}>Add User</button>;
+    return (
+      <div style={{ margin: "10px" }}>
+        <Button color="purple" onClick={() => setAdd(true)}>
+          Add User
+        </Button>
+      </div>
+    );
   }
 
   return (
-    <AddUserView
-      name={name}
-      email={email}
-      password={password}
-      handleRegister={handleRegister}
-      updateName={updateName}
-      updateEmail={updateEmail}
-      updatePass={updatePass}
-      updateAdmin={updateAdmin}
-      isAdmin={isAdmin}
-      role={role}
-    />
+    <div style={{ margin: "10px" }}>
+      <AddUserView
+        name={name}
+        email={email}
+        password={password}
+        handleRegister={handleRegister}
+        updateName={updateName}
+        updateEmail={updateEmail}
+        updatePass={updatePass}
+        updateAdmin={updateAdmin}
+        isAdmin={isAdmin}
+        role={role}
+      />
+    </div>
   );
 };
 
