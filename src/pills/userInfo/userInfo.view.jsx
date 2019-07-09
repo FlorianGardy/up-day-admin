@@ -12,7 +12,7 @@ const UserInfoView = ({ uuid }) => {
 };
 
 UserInfoView.propTypes = {
-  id: PropTypes.number.isRequired
+  uuid: PropTypes.string.isRequired
 };
 
 export default UserInfoView;

@@ -9,7 +9,7 @@ const Main = () => {
     <div style={{ width: "80%", margin: "auto" }}>
       <Route path="/" exact component={LoginForm} />
       <Route path="/users" exact component={UserPage} />
-      <Route path="/user/:id" exact component={UserPageByID} />
+      <Route path="/user/:uuid" exact component={UserPageByID} />
     </div>
   );
 };
