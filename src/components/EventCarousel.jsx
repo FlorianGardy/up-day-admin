@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import EventCard from "./EventCard";
 import PropTypes from "prop-types";
 import { getUserEvents } from "../pills/userInfo/userInfo.selector";
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Icon } from "semantic-ui-react";
 
 const EventCarousel = ({ userEvents: events }) => {
   const [index, setIndex] = useState(0);
@@ -22,7 +22,7 @@ const EventCarousel = ({ userEvents: events }) => {
     <div>
       <Card.Group itemsPerRow={4}>
         <Button color="purple" onClick={() => handleIndex(index - 1)}>
-          &larr;
+          <Icon disabled name="chevron left" />
         </Button>
         {events
           .sort((a, b) => {
@@ -39,7 +39,7 @@ const EventCarousel = ({ userEvents: events }) => {
             <EventCard key={i} {...event} />
           ))}
         <Button color="purple" onClick={() => handleIndex(index + 1)}>
-          &rarr;
+          <Icon disabled name="chevron right" />
         </Button>
       </Card.Group>
     </div>
