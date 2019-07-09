@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import EventCard from "./EventCard";
 import PropTypes from "prop-types";
 import { getUserEvents } from "../pills/userInfo/userInfo.selector";
+import { Card, Button } from "semantic-ui-react";
 
 const EventCarousel = ({ userEvents: events }) => {
   const [index, setIndex] = useState(0);
@@ -18,28 +19,29 @@ const EventCarousel = ({ userEvents: events }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        border: "1px green solid",
-        justifyContent: "space-between"
-      }}
-    >
-      <button onClick={() => handleIndex(index - 1)}>&larr;</button>
-      { events
-        .sort((a, b) => {
-          a = new Date(a.date);
-          b = new Date(b.date);
-          return a > b ? -1 : a < b ? 1 : 0;
-        })
-        .filter(
-          event =>
-            events.indexOf(event) < index + 3 && events.indexOf(event) >= index
-        )
-        .map((event, i) => (
-          <EventCard key={i} {...event} />
-        ))}
-      <button onClick={() => handleIndex(index + 1)}>&rarr;</button>
+    <div>
+      <Card.Group itemsPerRow={4}>
+        <Button color="purple" onClick={() => handleIndex(index - 1)}>
+          &larr;
+        </Button>
+        {events
+          .sort((a, b) => {
+            a = new Date(a.date);
+            b = new Date(b.date);
+            return a > b ? -1 : a < b ? 1 : 0;
+          })
+          .filter(
+            event =>
+              events.indexOf(event) < index + 3 &&
+              events.indexOf(event) >= index
+          )
+          .map((event, i) => (
+            <EventCard key={i} {...event} />
+          ))}
+        <Button color="purple" onClick={() => handleIndex(index + 1)}>
+          &rarr;
+        </Button>
+      </Card.Group>
     </div>
   );
 };
