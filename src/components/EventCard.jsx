@@ -1,22 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Card } from "semantic-ui-react";
 import moment from "moment";
 import "moment/locale/fr";
 
 const EventCard = ({ date, type, nature, context, comment }) => {
   return (
-    <div style={{ border: "blue 1px solid", textAlign: "center" }}>
-      <p>{moment(date).format("dddd DD MMMM à HH:mm")}</p>
-      <p>type : {type}</p>
-      <p>nature : {nature}</p>
-      <div>
-        context :
-        {context.map((el, i) => (
-          <p key={i}>{el}</p>
-        ))}
-      </div>
-      <p>comment : {comment}</p>
-    </div>
+    <Card>
+      <Card.Content header={nature} />
+      <Card.Content>
+        <Card.Header>{type}</Card.Header>
+        <Card.Meta>{moment(date).format("dddd DD MMMM à HH:mm")}</Card.Meta>
+        {context && (
+          <Card.Description>
+            {context.map((el, i) => (
+              <p key={i}>{el}</p>
+            ))}
+          </Card.Description>
+        )}
+        <Card.Description />
+      </Card.Content>
+      <Card.Content extra>Commentaire : {comment}</Card.Content>
+    </Card>
   );
 };
 
