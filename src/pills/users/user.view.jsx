@@ -1,13 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import UserCard from "../../components/UserCard";
-import { Card } from "semantic-ui-react";
+import { Card, Input } from "semantic-ui-react";
 
 const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
   return (
     <>
-      <label>filtre:</label>
-      <input value={filterValue} onChange={e => handleFilter(e.target.value)} />
+      <div style={{ margin: "10px" }}>
+        <Input
+          icon="search"
+          placeholder="Chercher un nom"
+          value={filterValue}
+          onChange={e => handleFilter(e.target.value)}
+        />
+      </div>
       <Card.Group itemsPerRow={3}>
         {users
           .filter(user =>
