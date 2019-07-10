@@ -10,7 +10,7 @@ export default class TitleMenu extends Component {
 		const { activeItem } = this.state;
 
 		return (
-			< Menu inverted fixed stackable>
+			< Menu inverted stackable>
         <Menu.Item header>
           <Icon name="settings" />
             UP Day Administration

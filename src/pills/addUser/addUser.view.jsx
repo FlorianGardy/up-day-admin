@@ -56,11 +56,11 @@ AddUserView.propTypes = {
   password: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  // isAdmin: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
   updateName: PropTypes.func.isRequired,
   updatePass: PropTypes.func.isRequired,
   updateEmail: PropTypes.func.isRequired,
-  // updateAdmin: PropTypes.func.isRequired,
+  updateAdmin: PropTypes.func.isRequired,
   handleRegister: PropTypes.func.isRequired
 };
 
