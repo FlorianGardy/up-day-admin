@@ -19,7 +19,6 @@ import {
   getAddUserEmail
 } from "./addUser.selector";
 import { addUserToDb } from "../../functions/addUserToDb";
-import { Button } from "semantic-ui-react";
 
 const AddUser = ({
   name,
@@ -35,7 +34,6 @@ const AddUser = ({
   isAdmin,
   resetAddUser
 }) => {
-  const [add, setAdd] = useState(false);
 
   useEffect(() => {
     if (isAdmin) {
@@ -46,24 +44,12 @@ const AddUser = ({
   }, [updateRole, isAdmin]);
 
   const handleRegister = async (name, password, role, email) => {
-    setAdd(false);
     await addUserToDb(name, password, email, role);
     getUserList();
     resetAddUser();
   };
 
-  if (!add) {
-    return (
-      <div style={{ margin: "10px" }}>
-        <Button color="purple" onClick={() => setAdd(true)}>
-          Add User
-        </Button>
-      </div>
-    );
-  }
-
   return (
-    <div style={{ margin: "10px" }}>
       <AddUserView
         name={name}
         email={email}
@@ -76,7 +62,6 @@ const AddUser = ({
         isAdmin={isAdmin}
         role={role}
       />
-    </div>
   );
 };
 
