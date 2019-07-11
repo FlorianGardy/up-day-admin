@@ -1,5 +1,6 @@
 import getUserFromApi from "../../functions/getUserFromApi";
 import Axios from "axios";
+import { getAPIconfig } from "../../functions/axiosConfig";
 
 export const UPDATE_USER_LIST = "@user/UPDATE_USER_LIST";
 
@@ -23,5 +24,12 @@ export function deleteUserFromDB(uuid) {
 }
 
 const deleteUser = uuid => {
-  return Axios.delete(`http://localhost:3030/users/${uuid}`);
+  const { baseURL, headers } = getAPIconfig();
+  const config = {
+    method: "DELETE",
+    baseURL,
+    url: `/users/${uuid}`,
+    headers
+  };
+  return Axios.request(config);
 };
