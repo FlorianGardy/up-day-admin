@@ -5,7 +5,7 @@ export function getUserCredentialsFromAPI(name, password) {
   const { baseURL, headers } = getAPIconfig();
 
   const config = {
-    method: "post",
+    method: "POST",
     baseURL,
     url: `login`,
     headers,
@@ -20,6 +20,7 @@ export function getUserCredentialsFromAPI(name, password) {
     .then(response => dataSelection(response))
     .catch(error => {
       console.log(error);
+      return error.response.data.statusCode;
     });
 }
 
