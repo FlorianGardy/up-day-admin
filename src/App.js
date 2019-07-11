@@ -7,7 +7,6 @@ import TitleMenu from "./components/TitleMenu";
 function App() {
   return (
   <Container fluid>
-    <TitleMenu />
     <Router />;
   </Container>
   )
