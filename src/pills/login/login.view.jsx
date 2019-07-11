@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
-const LoginView = ({ history, onSubmit }) => {
+const LoginView = ({ history, onSubmit, statusCode }) => {
+  let styled = {};
+  styled.opacity = statusCode === 400 ? 1 : 0;
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
@@ -25,12 +27,14 @@ const LoginView = ({ history, onSubmit }) => {
               placeholder="Password"
               type="password"
             />
-
             <Button color="purple" fluid size="large" type="submit">
               Login
             </Button>
           </Segment>
         </Form>
+        <Segment style={styled}>
+          <p>Nom d'utilisateur ou mot de passe invalid</p>
+        </Segment>
       </Grid.Column>
     </Grid>
   );
