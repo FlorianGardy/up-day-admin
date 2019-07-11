@@ -5,6 +5,8 @@ import { Button, Card } from "semantic-ui-react";
 import moment from "moment";
 import "moment/locale/fr";
 
+import DeleteModal from "../components/DeleteModal";
+
 const UserCard = ({
   history,
   name,
@@ -19,15 +21,7 @@ const UserCard = ({
   return (
     <Card>
       <Card.Content>
-        <Button
-          floated="right"
-          basic
-          size="mini"
-          color="red"
-          onClick={() => deleteUser(uuid)}
-        >
-          DELETE
-        </Button>
+        <DeleteModal uuid={uuid} name={name} deleteUser={deleteUser} />
         <Card.Header>{name}</Card.Header>
         <Card.Meta>
           Crée le : {moment(createdAt).format("DD/MM/YYYY")}
