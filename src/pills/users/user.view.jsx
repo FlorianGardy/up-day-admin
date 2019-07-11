@@ -1,16 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import UserCard from "../../components/UserCard";
-import { Card } from "semantic-ui-react";
+import UserTab from "../../components/UserTab";
+import { Card, Table } from "semantic-ui-react";
 
 const UserView = ({ users, deleteUser }) => {
   return (
-      <Card.Group itemsPerRow={3}>
+      <>
+        <Table.Header>
+          <Table.Row textAlign="center">
+            <Table.HeaderCell>Calendrier</Table.HeaderCell>
+            <Table.HeaderCell>Nom</Table.HeaderCell>
+            <Table.HeaderCell>Création</Table.HeaderCell>
+            <Table.HeaderCell>E-mail</Table.HeaderCell>
+            <Table.HeaderCell>Supprimer</Table.HeaderCell>
+          </Table.Row>
+			  </Table.Header>
         {users
           .map((user, i) => (
-            <UserCard key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
+            <UserTab key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
           ))}
-      </Card.Group>
+      </>
   );
 };
 
