@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EventCarousel from "../../components/EventCarousel";
+import DayCarousel from "../../components/DayCarousel";
 
-const UserInfoView = ({ uuid }) => {
+const UserInfoView = ({ uuid, events }) => {
   return (
     <div>
       <h1>Mon user id est : {uuid}</h1>
-      <EventCarousel />
+      <DayCarousel events={events} />
     </div>
   );
 };
