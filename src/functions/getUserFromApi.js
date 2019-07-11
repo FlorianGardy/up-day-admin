@@ -9,9 +9,15 @@ export default function getUserFromApi() {
     url: `/users`,
     headers
   };
-  return axios.request(config).then(response => {
-    return dataSelection(response);
-  });
+  return axios
+    .request(config)
+    .then(response => {
+      return dataSelection(response);
+    })
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
+    });
 }
 
 const dataSelection = response => {

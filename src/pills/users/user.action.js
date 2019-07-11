@@ -31,5 +31,8 @@ const deleteUser = uuid => {
     url: `/users/${uuid}`,
     headers
   };
-  return Axios.request(config);
+  return Axios.request(config).catch(err => {
+    localStorage.clear();
+    return (window.location.href = "/login");
+  });
 };

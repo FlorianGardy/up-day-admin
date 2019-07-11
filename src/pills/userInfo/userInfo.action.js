@@ -21,7 +21,12 @@ const getUserEventsFromApi = uuid => {
     url: `/events/${uuid}`,
     headers
   };
-  return Axios.request(config).then(res => dataSelection(res));
+  return Axios.request(config)
+    .then(res => dataSelection(res))
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
+    });
 };
 
 const dataSelection = response => {
