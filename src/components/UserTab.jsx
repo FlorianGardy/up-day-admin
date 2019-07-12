@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { Button, Table, Icon } from "semantic-ui-react";
+import { Table, Icon } from "semantic-ui-react";
 import moment from "moment";
 import "moment/locale/fr";
 

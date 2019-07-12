@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { getUserEvents } from "../pills/userInfo/userInfo.selector";
 import DayCard from "./DayCard";
 import CarouselButton from "./CarouselButton";
-import { CardGroup, Grid, GridColumn, Container, Card } from "semantic-ui-react";
+import { CardGroup } from "semantic-ui-react";
 
 const carousel = {
 	display: "grid",

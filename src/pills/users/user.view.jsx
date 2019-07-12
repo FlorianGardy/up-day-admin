@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import UserTab from "../../components/UserTab";
-import { Card, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 
 const UserView = ({ users, deleteUser }) => {
   return (
