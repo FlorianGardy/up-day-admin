@@ -1,5 +1,7 @@
 export const getUserEvents = state => state.UserEventsReducer.userEvents;
 
+export const getUserName = state => state.UserEventsReducer.userName;
+
 //TODO : test it
 
 export const getUserEventsGroupedByDay = state => {
