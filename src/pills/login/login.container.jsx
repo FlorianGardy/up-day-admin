@@ -8,8 +8,9 @@ import { getUuid, getStatusCode } from "./login.selector";
 const Login = ({ dispatch, userUuid, statusCode }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const { uuid, name, email, token } = user;
+      const { uuid, name, email, token } = JSON.parse(
+        localStorage.getItem("user")
+      );
       dispatch(updateUser(uuid, name, email, token));
     }
   }, [dispatch]);
