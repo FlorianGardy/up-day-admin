@@ -1,5 +1,25 @@
-import Axios from "axios";
+import axios from "axios";
+import { getAPIconfig } from "./axiosConfig";
 
 export default function getUserFromApi() {
-  return Axios.get("http://localhost:3030/users").then(res => res.data);
+  const { baseURL, headers } = getAPIconfig();
+  const config = {
+    method: "GET",
+    baseURL,
+    url: `/users`,
+    headers
+  };
+  return axios
+    .request(config)
+    .then(response => {
+      return dataSelection(response);
+    })
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
+    });
 }
+
+const dataSelection = response => {
+  return response.data;
+};

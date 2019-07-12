@@ -1,6 +1,11 @@
-import { USER_EVENTS, updateUserEvents } from "./userInfo.action";
+import {
+  USER_EVENTS,
+  updateUserEvents,
+  USER_NAME,
+  updateUserName
+} from "./userInfo.action";
 import UserEventsReducer from "./userInfo.reducer";
-import { getUserEvents } from "./userInfo.selector";
+import { getUserEvents, getUserName } from "./userInfo.selector";
 
 describe("# UserInfo", () => {
   describe("## actions", () => {
@@ -26,12 +31,21 @@ describe("# UserInfo", () => {
       };
       expect(updateUserEvents(userEvents)).toEqual(expectedAction);
     });
+    it("should create an action to update user name", () => {
+      const userName = "Chuck Norris";
+      const expectedAction = {
+        type: USER_NAME,
+        userName
+      };
+      expect(updateUserName(userName)).toEqual(expectedAction);
+    });
   });
 
   describe("## reducer", () => {
     it("should return initalState", () => {
       const initialState = {
-        userEvents: []
+        userEvents: [],
+        userName: ""
       };
       expect(UserEventsReducer(initialState, {})).toEqual(initialState);
     });
@@ -57,6 +71,15 @@ describe("# UserInfo", () => {
         userEvents: userEvents
       });
     });
+
+    it("should handle USER_NAME", () => {
+      const userName = "Chuck Norris";
+      expect(
+        UserEventsReducer({ userName: "" }, { type: USER_NAME, userName })
+      ).toEqual({
+        userName: userName
+      });
+    });
   });
 
   describe("## selector", () => {
@@ -65,6 +88,12 @@ describe("# UserInfo", () => {
         UserEventsReducer: { userEvents: [] }
       };
       expect(getUserEvents(initialStore)).toEqual([]);
+    });
+    it("should return Chuck Norris as userName", () => {
+      const initialStore = {
+        UserEventsReducer: { userName: "ChuckNorris" }
+      };
+      expect(getUserName(initialStore)).toEqual("ChuckNorris");
     });
   });
 });

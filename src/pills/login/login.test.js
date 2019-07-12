@@ -33,7 +33,8 @@ describe("# Login", () => {
             uuid: "",
             name: "",
             email: "",
-            token: ""
+            token: "",
+            statusCode: 200
           },
           { type: UPDATE_USER, payload: { uuid, name, email, token } }
         )
@@ -41,7 +42,8 @@ describe("# Login", () => {
         uuid: "aaaa-1111-aaaa",
         name: "Chuck Norris",
         email: "bestman@gmail.com",
-        token: "myToken"
+        token: "myToken",
+        statusCode: 200
       });
     });
   });
