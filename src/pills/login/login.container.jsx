@@ -3,13 +3,14 @@ import LoginView from "./login.view.jsx";
 import { getUserCredentials, updateUser } from "./login.action";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { getUuid } from "./login.selector";
+import { getUuid, getStatusCode } from "./login.selector";
 
-const Login = ({ dispatch, userUuid }) => {
+const Login = ({ dispatch, userUuid, statusCode }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const { uuid, name, email, token } = user;
+      const { uuid, name, email, token } = JSON.parse(
+        localStorage.getItem("user")
+      );
       dispatch(updateUser(uuid, name, email, token));
     }
   }, [dispatch]);
@@ -26,11 +27,12 @@ const Login = ({ dispatch, userUuid }) => {
     return <Redirect to="/" />;
   }
 
-  return <LoginView onSubmit={handleSubmit} />;
+  return <LoginView onSubmit={handleSubmit} statusCode={statusCode} />;
 };
 
 const mapStateToProps = state => ({
-  userUuid: getUuid(state)
+  userUuid: getUuid(state),
+  statusCode: getStatusCode(state)
 });
 
 export default connect(mapStateToProps)(Login);

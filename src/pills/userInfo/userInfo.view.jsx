@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EventCarousel from "../../components/EventCarousel";
+import DayCarousel from "../../components/DayCarousel";
 
-const UserInfoView = ({ uuid }) => {
+const UserInfoView = ({ name, events, userList }) => {
   return (
     <div>
-      <h1>Mon user id est : {uuid}</h1>
-      <EventCarousel />
+      <h1>Calendrier de {name}</h1>
+      <DayCarousel events={events} />
     </div>
   );
 };
 
 UserInfoView.propTypes = {
-  uuid: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired
 };
 
 export default UserInfoView;
