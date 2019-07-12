@@ -4,53 +4,53 @@ import PropTypes from "prop-types";
 import { getUserEvents } from "../pills/userInfo/userInfo.selector";
 import DayCard from "./DayCard";
 import CarouselButton from "./CarouselButton";
+import { CardGroup, Grid, GridColumn, Container, Card } from "semantic-ui-react";
+
+const carousel = {
+	display: "grid",
+	gridTemplateColumns: "3% 94% 3%"
+}
+
+
 
 const DayCarousel = ({ events }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+	const [currentIndex, setCurrentIndex] = useState(0);
 
-  return (
-    <div style={{ height: "100%" }}>
-      <div
-        style={{
-          border: "1px blue solid",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between"
-        }}
-      >
-        <CarouselButton
-          icon="chevron left"
-          onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-        />
-
-        {events
-          .filter(
-            day =>
-              events.indexOf(day) < currentIndex + 3 &&
-              events.indexOf(day) >= currentIndex
-          )
-          .map((day, i) => (
-            <DayCard key={i} day={day} />
-          ))}
-        <CarouselButton
-          icon="chevron right"
-          onClick={() =>
-            setCurrentIndex(Math.min(events.length - 3, currentIndex + 1))
-          }
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div style={carousel}>
+				<CarouselButton
+					icon="chevron left"
+					onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
+				/>
+				<CardGroup centered itemsPerRow={3}>
+			{events
+				.filter(
+					day =>
+						events.indexOf(day) < currentIndex + 3 &&
+						events.indexOf(day) >= currentIndex
+				)
+				.map((day, i) => (
+					<DayCard key={i} day={day} />
+				))}
+				</CardGroup>
+			<CarouselButton
+				icon="chevron right"
+				onClick={() =>
+					setCurrentIndex(Math.min(events.length - 3, currentIndex + 1))
+				}
+			/>
+		</div>
+	);
 };
 
 const mapStateToProps = state => {
-  return {
-    userEvents: getUserEvents(state)
-  };
+	return {
+		userEvents: getUserEvents(state)
+	};
 };
 
 DayCarousel.propTypes = {
-  userEvents: PropTypes.array.isRequired
+	userEvents: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps)(DayCarousel);

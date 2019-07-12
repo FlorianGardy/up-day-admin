@@ -2,27 +2,28 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import EventList from "./EventList";
 
+
+
+
 const DayCard = ({ day }) => {
-  const { date, events, natureCount } = day;
+	const { date, events, natureCount } = day;
 
-  const natureEntries = Object.entries(natureCount);
+	const natureEntries = Object.entries(natureCount);
 
-  return (
-    <div style={{ width: "30%" }}>
-      <Card centered fluid>
-        <Card.Content>
-          <Card.Header>{date}</Card.Header>
-          {natureEntries.map((n, i) => (
-            <div key={i}>
-              {n[0]} -> {n[1]}
-            </div>
-          ))}
-          <Card.Description>
-            <EventList events={events} />
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    </div>
-  );
+	return (
+		<Card fluid style={{border:"1px solid #F2711C"}}>
+      <Card.Content textAlign="center" style={{fontWeight:"bold"}}>{date}</Card.Content>
+      <Card.Content textAlign="center">
+			{natureEntries.map((n, i) => (
+				<div key={i}>
+					{n[1]} {n[0]}
+				</div>
+      ))}
+      </Card.Content>
+			<Card.Content>
+				<EventList events={events} />
+			</Card.Content>
+		</Card>
+	);
 };
 export default DayCard;

@@ -1,24 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import "moment/locale/fr";
 
 const EventCard = ({ date, type, nature, context, comment }) => {
   return (
-    <Card>
-      <Card.Content>
-        {nature} ({type})
-      </Card.Content>
-      <Card.Meta>{date}</Card.Meta>
+    <Table>
+      <Table.Header>
+        <Table.HeaderCell>{date}</Table.HeaderCell>
+        <Table.HeaderCell>{nature}</Table.HeaderCell>
+        <Table.HeaderCell>({type})</Table.HeaderCell>
+      </Table.Header>
+      <Table.Body>
       {context && (
-        <Card.Meta>
+        <Table.Row >
           {context.map((el, i) => (
             <div key={i}>{el}</div>
           ))}
-        </Card.Meta>
-      )}
-      {comment && <Card.Description>Commentaire : {comment}</Card.Description>}
-    </Card>
+          </Table.Row>
+          )}
+      {comment && <Table.Row >{comment}</Table.Row>}
+      </Table.Body>
+    </Table>
   );
 };
 

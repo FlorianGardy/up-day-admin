@@ -5,7 +5,7 @@ const LoginView = ({ history, onSubmit }) => {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="purple" textAlign="center">
+        <Header as="h2" color="orange" textAlign="center">
           Se connecter
         </Header>
         <Form size="large" onSubmit={e => onSubmit(e)}>
@@ -26,7 +26,7 @@ const LoginView = ({ history, onSubmit }) => {
               type="password"
             />
 
-            <Button color="purple" fluid size="large" type="submit">
+            <Button color="orange" fluid size="large" type="submit">
               Login
             </Button>
           </Segment>

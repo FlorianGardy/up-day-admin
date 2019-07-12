@@ -24,7 +24,7 @@ const _eventsGroupedByDay = events =>
     // push event in assets, and convert full date as hh:mm:ss
     r[date].events.push({
       ...e,
-      date: e.date.match(/(\d+:\d+:\d+)/)[0]
+      date: e.date.match(/(\d+:\d+)/)[0]
     });
 
     return r;
