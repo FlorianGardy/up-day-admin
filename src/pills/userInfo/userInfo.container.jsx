@@ -12,7 +12,6 @@ const UserInfoContainer = ({
   fetchUserName,
   userName
 }) => {
-  console.log("TCL: userName", userName);
   useEffect(() => {
     fetchUserData(uuid);
     fetchUserName(uuid);
