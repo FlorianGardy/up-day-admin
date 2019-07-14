@@ -13,7 +13,7 @@ const Login = ({ dispatch, userUuid, statusCode }) => {
       );
       dispatch(updateUser(uuid, name, email, token));
     }
-  }, [dispatch]);
+  }, [dispatch, userUuid]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Login = ({ dispatch, userUuid, statusCode }) => {
     dispatch(getUserCredentials(username, password));
   };
 
-  if (userUuid) {
+  if (userUuid && localStorage.getItem("user")) {
     return <Redirect to="/" />;
   }
 
