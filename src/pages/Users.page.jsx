@@ -6,20 +6,25 @@ import { Table } from "semantic-ui-react";
 import TitleMenu from "../components/TitleMenu";
 
 const UsersPage = () => {
-	return (
-		<>
-    	<TitleMenu />
-			<Table>
-				<Table.Header>
-					<Table.Cell textAlign="left"><AddUser /></Table.Cell>
-					<Table.Cell textAlign="right"><SearchBar /></Table.Cell>
-				</Table.Header>
-			</Table>
-			<Table>
-				<Users />
-			</Table>
-		</>
-	);
+  return (
+    <>
+      <TitleMenu />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "Space-between",
+          width: "90%",
+          margin: "auto"
+        }}
+      >
+        <AddUser />
+        <SearchBar />
+      </div>
+      <Table>
+        <Users />
+      </Table>
+    </>
+  );
 };
 
 export default UsersPage;
