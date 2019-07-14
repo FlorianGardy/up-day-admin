@@ -9,7 +9,7 @@ export default class ModalExampleControlled extends Component {
   handleClose = () => this.setState({ modalOpen: false });
 
   handleDelete = async uuid => {
-    this.props.deleteUser(uuid);
+    await this.props.deleteUser(uuid);
     this.setState({ modalOpen: false });
   };
 
@@ -17,15 +17,13 @@ export default class ModalExampleControlled extends Component {
     return (
       <Modal
         trigger={
-          <Button
-            floated="right"
-            basic
-            size="mini"
-            color="red"
+          <Icon
+            link
+            size="large"
+            name="trash alternate outline"
             onClick={this.handleOpen}
-          >
-            Supprimer
-          </Button>
+            color="orange"
+          />
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
@@ -42,7 +40,7 @@ export default class ModalExampleControlled extends Component {
         <Modal.Actions>
           <Button
             color="red"
-            onClick={() => this.handleDelete(this.props.uuid)}
+            onClick={uuid => this.handleDelete(this.props.uuid)}
             inverted
           >
             <Icon name="checkmark" /> Oui

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Table, Icon } from "semantic-ui-react";
 import moment from "moment";
 import "moment/locale/fr";
+import DeleteModal from "./DeleteModal";
 
 const UserTab = ({
   history,
@@ -28,12 +29,10 @@ const UserTab = ({
         <Table.Cell>{moment(createdAt).format("DD/MM/YYYY")}</Table.Cell>
         <Table.Cell>{email ? email : "non communiqué"}</Table.Cell>
         <Table.Cell>
-          <Icon
-            link
-            size="large"
-            name="trash alternate outline"
-            onClick={() => deleteUser(uuid)}
-            color="orange"
+          <DeleteModal
+            name={name}
+            uuid={uuid}
+            deleteUser={() => deleteUser(uuid)}
           />
         </Table.Cell>
       </Table.Row>
