@@ -9,6 +9,8 @@ const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
       localStorage.getItem("user")
     );
     dispatch(updateUser(uuid, name, email, token));
+  } else {
+    dispatch(updateUser("", "", "", ""));
   }
   return (
     <Route
@@ -17,9 +19,11 @@ const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
         localStorage.getItem("user") ? (
           <Component {...props} />
         ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
+          <>
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          </>
         )
       }
     />
