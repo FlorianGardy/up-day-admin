@@ -1,3 +1,5 @@
+import { UPDATE_USER } from "./login.action";
+
 const initialState = {
   uuid: "",
   name: "",
@@ -8,7 +10,7 @@ const initialState = {
 
 export default function login(state = initialState, action) {
   switch (action.type) {
-    case "@login/UPDATE_USER":
+    case UPDATE_USER:
       return {
         ...state,
         uuid: action.payload.uuid,
@@ -17,7 +19,7 @@ export default function login(state = initialState, action) {
         token: action.payload.token,
         statusCode: 200
       };
-    case "@login/UPDATE_USER_ERROR":
+    case UPDATE_USER_ERROR:
       return {
         ...state,
         statusCode: action.payload
