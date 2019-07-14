@@ -45,7 +45,6 @@ const AddUserView = ({
               label="Voulez-vous créer un nouvel administrateur?"
               required
               onChange={(e, d) => updateAdmin(d.checked)}
-              // onChange={(e, d) => console.log(d.checked)}
               checked={isAdmin}
             />
             <Button type="submit" color="orange">
