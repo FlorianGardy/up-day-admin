@@ -14,15 +14,19 @@ export const updateUserError = error => {
 export const getUserCredentials = (userName, UserPass) => {
   return async (dispatch, getState) => {
     const res = await getUserCredentialsFromAPI(userName, UserPass);
-
     if (res === 400) {
       dispatch(updateUserError(res));
-    }
-    const { uuid, name, email, token } = res;
-    if (token) {
-      let storedUser = JSON.stringify({ uuid, name, email, token });
-      localStorage.setItem("user", storedUser);
-      dispatch(updateUser(uuid, name, email, token));
+    } else {
+      if (res.role !== "admin") {
+        dispatch(updateUserError(403));
+      } else {
+        const { uuid, name, email, token } = res;
+        if (token) {
+          let storedUser = JSON.stringify({ uuid, name, email, token });
+          localStorage.setItem("user", storedUser);
+          dispatch(updateUser(uuid, name, email, token));
+        }
+      }
     }
   };
 };

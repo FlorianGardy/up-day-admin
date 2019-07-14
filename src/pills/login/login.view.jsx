@@ -3,7 +3,18 @@ import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
 const LoginView = ({ history, onSubmit, statusCode }) => {
   let styled = {};
-  styled.opacity = statusCode === 400 ? 1 : 0;
+  styled.opacity = statusCode !== 200 ? 1 : 0;
+  let errorMessage;
+  switch (statusCode) {
+    case 400:
+      errorMessage = "Identifiant ou mot de pass incorrecte";
+      break;
+    case 403:
+      errorMessage = "l'utilisateur n'est pas admin";
+      break;
+    default:
+      errorMessage = "";
+  }
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
@@ -17,24 +28,23 @@ const LoginView = ({ history, onSubmit, statusCode }) => {
               fluid
               icon="user"
               iconPosition="left"
-              placeholder="Name"
+              placeholder="Identifiant"
             />
             <Form.Input
               fluid
               name="password"
               icon="lock"
               iconPosition="left"
-              placeholder="Password"
+              placeholder="Mot de passe"
               type="password"
             />
-
             <Button color="orange" fluid size="large" type="submit">
-              Login
+              Se connecter
             </Button>
           </Segment>
         </Form>
         <Segment style={styled}>
-          <p>Nom d'utilisateur ou mot de passe invalid</p>
+          <p>{errorMessage}</p>
         </Segment>
       </Grid.Column>
     </Grid>
