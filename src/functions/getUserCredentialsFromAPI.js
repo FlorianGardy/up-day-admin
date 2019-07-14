@@ -16,13 +16,10 @@ export function getUserCredentialsFromAPI(name, password) {
 
   return axios
     .request(config)
-    .then(response => dataSelection(response))
+    .then(response => _dataSelection(response))
     .catch(error => {
       return error.response.data.statusCode;
     });
 }
 
-const dataSelection = response => {
-  let selectedData = response.data;
-  return selectedData;
-};
+const _dataSelection = response => response.data;
