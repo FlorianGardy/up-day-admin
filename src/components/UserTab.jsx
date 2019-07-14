@@ -27,7 +27,7 @@ const UserTab = ({
         </Table.Cell>
         <Table.Cell>{name}</Table.Cell>
         <Table.Cell>{moment(createdAt).format("DD/MM/YYYY")}</Table.Cell>
-        <Table.Cell>{email ? email : "non communiqué"}</Table.Cell>
+        {/* <Table.Cell>{email ? email : "non communiqué"}</Table.Cell> */}
         <Table.Cell>
           <DeleteModal
             name={name}
