@@ -15,39 +15,46 @@ const AddUserView = ({
   handleRegister
 }) => {
   return (
-    <Modal trigger={<Button color="orange">Ajouter un nouvel utilisateur</Button>}>
-    <Modal.Header>Ajouter un nouvel utilisateur</Modal.Header>
-    <Modal.Content>
-      <Grid centered>
-        <Form onSubmit={() => handleRegister(name, password, role, email)}>
-          <Form.Input
-            placeholder="Nom d'utilisateur"
-            type="text"
-            value={name}
-            onChange={e => updateName(e.target.value)}
-          />
-          <Form.Input
-            type="password"
-            placeholder="Mot de passe"
-            value={password}
-            onChange={e => updatePass(e.target.value)}
-          />
-          <Form.Input
+    <Modal
+      trigger={<Button color="orange">Ajouter un nouvel utilisateur</Button>}
+    >
+      <Modal.Header>Ajouter un nouvel utilisateur</Modal.Header>
+      <Modal.Content>
+        <Grid centered>
+          <Form onSubmit={() => handleRegister(name, password, role, email)}>
+            <Form.Input
+              placeholder="Nom d'utilisateur"
+              type="text"
+              value={name}
+              onChange={e => updateName(e.target.value)}
+            />
+            <Form.Input
+              type="password"
+              placeholder="Mot de passe"
+              value={password}
+              onChange={e => updatePass(e.target.value)}
+            />
+            {/* <Form.Input
             type="email"
             placeholder="E-mail"
             value={email}
             onChange={e => updateEmail(e.target.value)}
-          />
-          <Form.Checkbox
-            inline label='Voulez-vous créer un nouvel administrateur?' required
-            onChange={e => updateAdmin(e.target.checked)}
-            checked={isAdmin}
-          />
-          <Button type="submit" color="orange">Valider</Button>
-        </Form>
-      </Grid>
-    </Modal.Content>
-  </Modal>
+          /> */}
+            <Form.Checkbox
+              inline
+              label="Voulez-vous créer un nouvel administrateur?"
+              required
+              onChange={(e, d) => updateAdmin(d.checked)}
+              // onChange={(e, d) => console.log(d.checked)}
+              checked={isAdmin}
+            />
+            <Button type="submit" color="orange">
+              Valider
+            </Button>
+          </Form>
+        </Grid>
+      </Modal.Content>
+    </Modal>
   );
 };
 

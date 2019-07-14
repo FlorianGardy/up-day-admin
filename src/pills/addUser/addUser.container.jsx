@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -34,7 +34,6 @@ const AddUser = ({
   isAdmin,
   resetAddUser
 }) => {
-
   useEffect(() => {
     if (isAdmin) {
       updateRole("admin");
@@ -50,18 +49,18 @@ const AddUser = ({
   };
 
   return (
-      <AddUserView
-        name={name}
-        email={email}
-        password={password}
-        handleRegister={handleRegister}
-        updateName={updateName}
-        updateEmail={updateEmail}
-        updatePass={updatePass}
-        updateAdmin={updateAdmin}
-        isAdmin={isAdmin}
-        role={role}
-      />
+    <AddUserView
+      name={name}
+      email={email}
+      password={password}
+      handleRegister={handleRegister}
+      updateName={updateName}
+      updateEmail={updateEmail}
+      updatePass={updatePass}
+      updateAdmin={updateAdmin}
+      isAdmin={isAdmin}
+      role={role}
+    />
   );
 };
 
