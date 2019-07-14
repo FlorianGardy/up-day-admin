@@ -4,12 +4,12 @@ import { Input } from "semantic-ui-react";
 
 const SearchBarView = ({ handleChange, searchValue }) => {
   return (
-        <Input
-          icon="search"
-          placeholder="Chercher un nom"
-          value={searchValue}
-          onChange={e => handleChange(e.target.value)}
-        />
+    <Input
+      icon="search"
+      placeholder="Chercher un identifiant"
+      value={searchValue}
+      onChange={e => handleChange(e.target.value)}
+    />
   );
 };
 

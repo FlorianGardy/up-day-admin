@@ -9,7 +9,7 @@ const UserView = ({ users, deleteUser }) => {
       <Table.Header>
         <Table.Row textAlign="center">
           <Table.HeaderCell>Calendrier</Table.HeaderCell>
-          <Table.HeaderCell>Nom</Table.HeaderCell>
+          <Table.HeaderCell>Identifiant</Table.HeaderCell>
           <Table.HeaderCell>Création</Table.HeaderCell>
           {/* <Table.HeaderCell>E-mail</Table.HeaderCell> */}
           <Table.HeaderCell>Supprimer</Table.HeaderCell>

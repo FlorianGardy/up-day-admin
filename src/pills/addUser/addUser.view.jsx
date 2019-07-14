@@ -39,7 +39,7 @@ const AddUserView = ({
         <Grid centered>
           <Form onSubmit={() => handleClose(name, password, role, email)}>
             <Form.Input
-              placeholder="Nom d'utilisateur"
+              placeholder="Identifiant"
               type="text"
               value={name}
               onChange={e => updateName(e.target.value)}
