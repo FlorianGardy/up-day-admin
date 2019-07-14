@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Grid, Modal, Form, Button } from "semantic-ui-react";
 
@@ -14,14 +14,30 @@ const AddUserView = ({
   role,
   handleRegister
 }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleClose = (name, password, role, email) => {
+    if (name && password && role) {
+      handleRegister(name, password, role, email);
+    }
+    setModalOpen(false);
+  };
   return (
     <Modal
-      trigger={<Button color="orange">Ajouter un nouvel utilisateur</Button>}
+      trigger={
+        <Button onClick={() => setModalOpen(true)} color="orange">
+          Ajouter un nouvel utilisateur
+        </Button>
+      }
+      open={modalOpen}
+      onClose={() => handleClose()}
+      basic
+      size="small"
     >
       <Modal.Header>Ajouter un nouvel utilisateur</Modal.Header>
       <Modal.Content>
         <Grid centered>
-          <Form onSubmit={() => handleRegister(name, password, role, email)}>
+          <Form onSubmit={() => handleClose(name, password, role, email)}>
             <Form.Input
               placeholder="Nom d'utilisateur"
               type="text"
