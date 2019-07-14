@@ -13,7 +13,7 @@ const UsersPage = () => {
         style={{
           display: "flex",
           justifyContent: "Space-between",
-          width: "90%",
+          width: "94%",
           margin: "auto"
         }}
       >
