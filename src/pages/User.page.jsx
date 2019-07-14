@@ -7,7 +7,7 @@ import TitleMenu from "../components/TitleMenu";
 
 const UserPage = ({ match }) => {
 	return (
-		<>
+		<div styles="100vh">
 			<TitleMenu />
 			<Container fluid>
 					<Button as={Link} to="/users" color="orange"  style={{marginLeft:"3vw"}}>
@@ -15,7 +15,7 @@ const UserPage = ({ match }) => {
 					</Button>
 					<UserInfoContainer uuid={match.params.uuid} />
 			</Container>
-		</>
+		</div>
 	);
 };
 

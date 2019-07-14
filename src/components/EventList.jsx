@@ -6,7 +6,7 @@ const EventList = ({ events }) => {
   return (
     <div
       style={{
-        height: "65vh",
+        height: "45vMin",
         overflow: "auto"
       }}
     >

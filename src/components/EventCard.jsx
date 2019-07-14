@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
 import "moment/locale/fr";
 
-const EventCard = ({ date, type, nature, context, comment }) => {
+const EventCard = ({ date, type, nature, context, volume, comment }) => {
 	return (
 		<List divided>
 			<List.Item>
 				<List.Header  style={{display:"flex", justifyContent:"space-between"}}>
-					<div>{date}</div><div>{nature}</div><div>{type}</div>
+					<div>{date}</div><div>{nature}</div><div>{type}</div><div>{volume}</div>
 				</List.Header>
 			</List.Item>
 			<List.Item>
