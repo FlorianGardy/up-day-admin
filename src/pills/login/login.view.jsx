@@ -7,7 +7,7 @@ const LoginView = ({ history, onSubmit, statusCode }) => {
   let errorMessage;
   switch (statusCode) {
     case 400:
-      errorMessage = "Identifiant ou mot de pass incorrecte";
+      errorMessage = "Identifiant ou mot de passe incorrecte";
       break;
     case 403:
       errorMessage = "l'utilisateur n'est pas admin";
