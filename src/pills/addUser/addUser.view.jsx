@@ -31,7 +31,6 @@ const AddUserView = ({
       }
       open={modalOpen}
       onClose={() => handleClose()}
-      basic
       size="small"
     >
       <Modal.Header>Ajouter un nouvel utilisateur</Modal.Header>

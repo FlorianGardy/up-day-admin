@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
 const LoginView = ({ history, onSubmit, statusCode }) => {
-  let styled = {};
+  let styled = { color: "red" };
   styled.opacity = statusCode !== 200 ? 1 : 0;
   let errorMessage;
   switch (statusCode) {
