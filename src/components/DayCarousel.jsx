@@ -11,8 +11,12 @@ const carousel = {
   gridTemplateColumns: "3% 94% 3%"
 };
 
+const NUMBER_OF_DISPLAYED_CARDS = 3;
+
 const DayCarousel = ({ events }) => {
-  const [currentIndex, setCurrentIndex] = useState(events.length + 1);
+  const [currentIndex, setCurrentIndex] = useState(
+    events.length + NUMBER_OF_DISPLAYED_CARDS - 1
+  );
 
   return (
     <div style={carousel}>
@@ -20,11 +24,11 @@ const DayCarousel = ({ events }) => {
         icon="chevron left"
         onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
       />
-      <CardGroup centered itemsPerRow={3}>
+      <CardGroup centered itemsPerRow={NUMBER_OF_DISPLAYED_CARDS}>
         {events
           .filter(
             day =>
-              events.indexOf(day) < currentIndex + 3 &&
+              events.indexOf(day) < currentIndex + NUMBER_OF_DISPLAYED_CARDS &&
               events.indexOf(day) >= currentIndex
           )
           .map((day, i) => (
@@ -34,7 +38,12 @@ const DayCarousel = ({ events }) => {
       <CarouselButton
         icon="chevron right"
         onClick={() =>
-          setCurrentIndex(Math.min(events.length - 3, currentIndex + 1))
+          setCurrentIndex(
+            Math.min(
+              events.length - NUMBER_OF_DISPLAYED_CARDS,
+              currentIndex + 1
+            )
+          )
         }
       />
     </div>
