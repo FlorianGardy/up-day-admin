@@ -9,6 +9,7 @@ const SearchBarView = ({ handleChange, searchValue }) => {
       placeholder="Chercher un identifiant"
       value={searchValue}
       onChange={e => handleChange(e.target.value)}
+      style={{width:"25vw"}}
     />
   );
 };

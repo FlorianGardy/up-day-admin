@@ -1,25 +1,27 @@
 import React from "react";
-import UserInfoContainer from "../pills/userInfo/userInfo.container";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Button, Container } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
+
+import UserInfoContainer from "../pills/userInfo/userInfo.container";
 import TitleMenu from "../components/TitleMenu";
+
 
 const UserPage = ({ match }) => {
   return (
-    <div styles="100vh">
+    <div>
       <TitleMenu />
-      <Container fluid>
+        <div style={{ width: "90vw", margin: "3vmin 5vw"}}>
         <Button
           as={Link}
           to="/users"
           color="orange"
-          style={{ marginLeft: "3vw" }}
+          style={{width:"25vw"}}
         >
           Revenir aux utilisateurs
         </Button>
+        </div>
         <UserInfoContainer uuid={match.params.uuid} />
-      </Container>
     </div>
   );
 };

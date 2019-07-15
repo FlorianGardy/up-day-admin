@@ -2,7 +2,6 @@ import React from "react";
 import Users from "../pills/users/user.container";
 import AddUser from "../pills/addUser/addUser.container";
 import SearchBar from "../pills/searchBar/searchBar.container";
-import { Table } from "semantic-ui-react";
 import TitleMenu from "../components/TitleMenu";
 
 const UsersPage = () => {
@@ -13,16 +12,14 @@ const UsersPage = () => {
         style={{
           display: "flex",
           justifyContent: "Space-between",
-          width: "94%",
-          margin: "auto"
+          width: "90vw", 
+          margin: "3vmin 5vw"
         }}
       >
         <AddUser />
         <SearchBar />
       </div>
-      <Table>
-        <Users />
-      </Table>
+      <Users />
     </>
   );
 };

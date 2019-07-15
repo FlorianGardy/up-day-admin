@@ -8,7 +8,7 @@ import { CardGroup } from "semantic-ui-react";
 
 const carousel = {
   display: "grid",
-  gridTemplateColumns: "3% 94% 3%"
+  gridTemplateColumns: "5vw 90vw 5vw"
 };
 
 const DayCarousel = ({ events }) => {
@@ -20,7 +20,7 @@ const DayCarousel = ({ events }) => {
         icon="chevron left"
         onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
       />
-      <CardGroup centered itemsPerRow={3}>
+      <CardGroup itemsPerRow={3} >
         {events
           .filter(
             day =>

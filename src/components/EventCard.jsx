@@ -5,7 +5,7 @@ import "moment/locale/fr";
 
 const EventCard = ({ date, type, nature, context, volume, comment }) => {
   return (
-    <List divided>
+    <List divided fluid>
       <List.Item>
         <List.Header
           style={{ display: "flex", justifyContent: "space-between" }}

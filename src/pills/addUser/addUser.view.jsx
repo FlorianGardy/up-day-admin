@@ -25,7 +25,7 @@ const AddUserView = ({
   return (
     <Modal
       trigger={
-        <Button onClick={() => setModalOpen(true)} color="orange">
+        <Button onClick={() => setModalOpen(true)} color="orange" style={{width:"25vw"}}>
           Ajouter un utilisateur
         </Button>
       }

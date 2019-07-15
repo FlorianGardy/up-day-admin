@@ -5,7 +5,7 @@ import { Menu, Icon } from "semantic-ui-react";
 
 const TitleMenu = ({name}) => {
 		return (
-			<Menu inverted>
+			<Menu inverted style={{backgroundColor:"#243330"}}>
         <Menu.Item header>
           <Icon name="settings" />
             UP Day Administration

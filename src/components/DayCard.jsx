@@ -8,11 +8,11 @@ const DayCard = ({ day }) => {
   const natureEntries = Object.entries(natureCount);
 
   return (
-    <Card fluid style={{ border: "1px solid #F2711C" }}>
+    <Card fluid style={{ backgroundColor:"rgba(34,36,38,.1)", border:"1px solid rgba(34,36,38,.1)" }}>
       <Card.Content textAlign="center" style={{ fontWeight: "bold" }}>
         {date}
       </Card.Content>
-      <Card.Content textAlign="center">
+      <Card.Content textAlign="center" style={{ padding:"0"}}>
         {natureEntries.map((n, i) => (
           <div key={i}>
             {n[1]} {n[0]}
@@ -20,7 +20,7 @@ const DayCard = ({ day }) => {
           </div>
         ))}
       </Card.Content>
-      <Card.Content>
+      <Card.Content style={{ padding:"0"}} >
         <EventList events={events} />
       </Card.Content>
     </Card>
