@@ -1,17 +1,67 @@
 import Axios from "axios";
+import { getAPIconfig } from "../../functions/axiosConfig";
 export const USER_EVENTS = "@userInfo/USER_EVENTS";
+export const CLEAR_USER_EVENTS = "@userInfo/CLEAR_USER_EVENTS";
+export const USER_NAME = "@userInfo/USER_NAME";
+
+export const clearUserEvents = () => {
+  return { type: CLEAR_USER_EVENTS };
+};
 
 export const updateUserEvents = userEvents => {
   return { type: USER_EVENTS, userEvents };
 };
 
-export function fetchUserData(id) {
+export const updateUserName = userName => {
+  return { type: USER_NAME, userName };
+};
+
+export function fetchUserData(uuid) {
   return async dispatch => {
-    const userEvents = await getUserEventsFromApi(id);
+    const userEvents = await getUserEventsFromApi(uuid);
     dispatch(updateUserEvents(userEvents));
   };
 }
 
-const getUserEventsFromApi = id => {
-  return Axios(`http://localhost:3030/events/${id}`).then(res => res.data);
+export function fetchUserName(uuid) {
+  return async dispatch => {
+    const { name } = await getUserNameFromApi(uuid);
+    dispatch(updateUserName(name));
+  };
+}
+
+const getUserNameFromApi = uuid => {
+  const { baseURL, headers } = getAPIconfig();
+  const config = {
+    method: "GET",
+    baseURL,
+    url: `/users/${uuid}`,
+    headers
+  };
+  return Axios.request(config)
+    .then(res => dataSelection(res))
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
+    });
+};
+
+const getUserEventsFromApi = uuid => {
+  const { baseURL, headers } = getAPIconfig();
+  const config = {
+    method: "GET",
+    baseURL,
+    url: `/users/${uuid}/events`,
+    headers
+  };
+  return Axios.request(config)
+    .then(res => dataSelection(res))
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
+    });
+};
+
+const dataSelection = response => {
+  return response.data;
 };

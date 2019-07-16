@@ -1,38 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getuserList, deleteUserFromDB } from "./user.action";
+import { clearUserEvents } from "../userInfo/userInfo.action";
 import UserView from "./user.view";
 import { getUserList } from "./user.selector";
+import { getSearchValue } from "../searchBar/searchBar.selector";
 
-const User = ({ updateUserList, deleteUserFromDB, users }) => {
+const User = ({
+  updateUserList,
+  deleteUserFromDB,
+  users,
+  searchValue,
+  clearUserEvents
+}) => {
   useEffect(() => {
     updateUserList();
-  }, [updateUserList]);
+    clearUserEvents();
+  }, [updateUserList, clearUserEvents]);
 
-  const [filterValue, setFilterValue] = useState("");
+  const filteredUsers = users
+    .filter(user => user.name.toLowerCase().includes(searchValue.toLowerCase()))
+    .reverse();
 
   return (
-    <>
-      <UserView
-        users={users}
-        deleteUser={uuid => deleteUserFromDB(uuid)}
-        handleFilter={filterValue => setFilterValue(filterValue)}
-        filterValue={filterValue}
-      />
-    </>
+    <UserView
+      users={filteredUsers}
+      deleteUser={uuid => deleteUserFromDB(uuid)}
+    />
   );
 };
 
 const mapDispatchToPros = dispatch => {
   return {
     updateUserList: () => dispatch(getuserList()),
-    deleteUserFromDB: uuid => dispatch(deleteUserFromDB(uuid))
+    deleteUserFromDB: uuid => dispatch(deleteUserFromDB(uuid)),
+    clearUserEvents: () => dispatch(clearUserEvents())
   };
 };
 
 const mapStateToProps = state => ({
-  users: getUserList(state)
+  users: getUserList(state),
+  searchValue: getSearchValue(state)
 });
 
 User.propTypes = {

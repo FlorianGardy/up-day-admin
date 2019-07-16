@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -34,8 +34,6 @@ const AddUser = ({
   isAdmin,
   resetAddUser
 }) => {
-  const [add, setAdd] = useState(false);
-
   useEffect(() => {
     if (isAdmin) {
       updateRole("admin");
@@ -45,15 +43,10 @@ const AddUser = ({
   }, [updateRole, isAdmin]);
 
   const handleRegister = async (name, password, role, email) => {
-    setAdd(false);
     await addUserToDb(name, password, email, role);
     getUserList();
     resetAddUser();
   };
-
-  if (!add) {
-    return <button onClick={() => setAdd(true)}>Add User</button>;
-  }
 
   return (
     <AddUserView

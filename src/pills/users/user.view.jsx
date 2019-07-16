@@ -1,29 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import UserRow from "../../components/UserRow";
+import UserTab from "../../components/UserTab";
+import { Table } from "semantic-ui-react";
 
-const UserView = ({ users, deleteUser, handleFilter, filterValue }) => {
-  return (
-    <>
-      <label>filtre:</label>
-      <input value={filterValue} onChange={e => handleFilter(e.target.value)} />
-      {users
-        .filter(user =>
-          user["name"].toLowerCase().includes(filterValue.toLowerCase())
-        )
-        .reverse()
-        .map((user, i) => (
-          <UserRow key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
-        ))}
-    </>
-  );
+const UserView = ({ users, deleteUser }) => {
+	return (
+		<div style={{ width: "90vw", margin: "3vmin 5vw" }}>
+			<Table>
+				<Table.Header>
+					<Table.Row textAlign="center">
+						<Table.HeaderCell>Calendrier</Table.HeaderCell>
+						<Table.HeaderCell>Identifiant</Table.HeaderCell>
+						<Table.HeaderCell>Création</Table.HeaderCell>
+						{/* <Table.HeaderCell>E-mail</Table.HeaderCell> */}
+						<Table.HeaderCell>Supprimer</Table.HeaderCell>
+					</Table.Row>
+				</Table.Header>
+				{users.map((user, i) => (
+					<UserTab key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
+				))}
+			</Table>
+		</div>
+	);
 };
 
 UserView.propTypes = {
-  users: PropTypes.array.isRequired,
-  deleteUser: PropTypes.func.isRequired,
-  handleFilter: PropTypes.func.isRequired,
-  filterValue: PropTypes.string.isRequired
+	users: PropTypes.array.isRequired,
+	deleteUser: PropTypes.func.isRequired
 };
 
 export default UserView;

@@ -1,36 +1,45 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchUserData } from "./userInfo.action";
+import { fetchUserData, fetchUserName } from "./userInfo.action";
 import UserInfoView from "./userInfo.view";
-import { getUserEvents } from "./userInfo.selector";
+import { getUserEventsGroupedByDay, getUserName } from "./userInfo.selector";
 
-const UserInfoContainer = ({ id, fetchUserData, userEvents }) => {
+const UserInfoContainer = ({
+  uuid,
+  fetchUserData,
+  userEventsGroupedByDay,
+  fetchUserName,
+  userName
+}) => {
   useEffect(() => {
-    fetchUserData(id);
-  }, [fetchUserData, id]);
+    fetchUserData(uuid);
+    fetchUserName(uuid);
+  }, [fetchUserData, fetchUserName, uuid]);
 
-  id = 1; // FIX to get events (waiting for auth)
-
-  return <UserInfoView id={id} />;
+  return (
+    <UserInfoView uuid={uuid} events={userEventsGroupedByDay} name={userName} />
+  );
 };
 
 const mapStateToProps = state => {
   return {
-    userEvents: getUserEvents(state)
+    userEventsGroupedByDay: getUserEventsGroupedByDay(state),
+    userName: getUserName(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUserData: id => dispatch(fetchUserData(id))
+    fetchUserData: uuid => dispatch(fetchUserData(uuid)),
+    fetchUserName: uuid => dispatch(fetchUserName(uuid))
   };
 };
 
 UserInfoContainer.propTypes = {
-  id: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
   fetchUserData: PropTypes.func.isRequired,
-  userEvents: PropTypes.array.isRequired
+  userEventsGroupedByDay: PropTypes.array.isRequired
 };
 
 export default connect(

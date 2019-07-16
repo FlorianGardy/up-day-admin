@@ -1,8 +1,13 @@
 import React from "react";
-import AdminPanel from "./AdminPanel";
+import Router from "./Router";
+import { Container } from "semantic-ui-react";
 
 function App() {
-  return <AdminPanel />;
+  return (
+    <Container fluid>
+      <Router />
+    </Container>
+  );
 }
 
 export default App;
