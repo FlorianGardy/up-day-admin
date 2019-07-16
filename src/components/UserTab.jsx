@@ -27,6 +27,7 @@ const UserTab = ({
         </Table.Cell>
         <Table.Cell>{name}</Table.Cell>
         <Table.Cell>{moment(createdAt).format("DD/MM/YYYY")}</Table.Cell>
+        {/* This input have been disable because of personal data problematique */}
         {/* <Table.Cell>{email ? email : "non communiqué"}</Table.Cell> */}
         <Table.Cell>
           <DeleteModal
