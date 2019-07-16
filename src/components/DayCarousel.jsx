@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { CardGroup } from "semantic-ui-react";
+
 import { getUserEvents } from "../pills/userInfo/userInfo.selector";
 import DayCard from "./DayCard";
 import CarouselButton from "./CarouselButton";
-import { CardGroup } from "semantic-ui-react";
 
-const carousel = {
+const _carousel = {
   display: "grid",
   gridTemplateColumns: "5vw 90vw 5vw"
 };
@@ -19,12 +20,12 @@ const DayCarousel = ({ events }) => {
   );
 
   return (
-    <div style={carousel}>
+    <div style={_carousel}>
       <CarouselButton
         icon="chevron left"
         onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
       />
-      <CardGroup centered itemsPerRow={NUMBER_OF_DISPLAYED_CARDS}>
+      <CardGroup stackable centered itemsPerRow={NUMBER_OF_DISPLAYED_CARDS}>
         {events
           .filter(
             day =>

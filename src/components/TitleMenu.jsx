@@ -9,7 +9,7 @@ const menuStyle = {backgroundColor:"#243330"}
 
 const TitleMenu = ({ name }) => {
   return (
-    <Menu inverted style={menuStyle} >
+    <Menu inverted style={menuStyle}>
       <Menu.Item header>
         <Icon name="settings" />
         {TITLE}

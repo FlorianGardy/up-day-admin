@@ -2,17 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "semantic-ui-react";
 
+
 const button = {
-  backgroundColor: "transparent",
+	backgroundColor: "transparent",
 	textAlign: "center",
-  margin: "0",
-  padding: "0"
+	padding: "10px"
 };
+const iconStyle = {
+	position: "fixed",
+	top: "50vh",
+	display: "block",
+}
 
 const CarouselButton = ({ icon, onClick }) => {
+
+
   return (
     <Button onClick={() => onClick()} style={button}>
-      <Icon name={icon} size="big" color="orange" fitted />
+      <Icon style={iconStyle} name={icon} size="big" fitted color="orange"/>
     </Button>
   );
 };

@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import EventTable from "./EventTable";
 
 
 const _style = {
-  height: "50vMin",
-  overflow: "auto"
+  overflow: "auto",
+  maxWidth: "100%"
 };
 
 const EventList = ({ events }) => {

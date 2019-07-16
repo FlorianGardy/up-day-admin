@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Table, Icon } from "semantic-ui-react";
 import moment from "moment";
 import "moment/locale/fr";
+
 import DeleteModal from "./DeleteModal";
 
 const UserTab = ({
