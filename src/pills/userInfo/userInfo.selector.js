@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const getUserEvents = state => state.UserEventsReducer.userEvents;
 
 export const getUserName = state => state.UserEventsReducer.userName;
@@ -15,18 +17,18 @@ export const getUserEventsGroupedByDay = state => {
 const _eventsGroupedByDay = events =>
   events.reduce((r, e) => {
     // RegExp to get day, month and year
-    const date = e.date.match(/(\d+-\d+-\d+)/)[0].replace(/-/g, "/");
+    const date = moment(e.date).format("LL");
 
     // if date dd/mm/yyyy does not exist
     if (r[date] === undefined) {
       // create an object with Date as key
-      r[date] = { date: date, events: [] };
+      r[date] = { date, events: [] };
     }
 
     // push event in assets, and convert full date as hh:mm:ss
     r[date].events.push({
       ...e,
-      date: e.date.match(/(\d+:\d+:\d+)/)[0]
+      date: moment(e.date).format("HH:mm")
     });
 
     return r;

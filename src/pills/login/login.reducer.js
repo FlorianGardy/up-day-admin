@@ -3,7 +3,7 @@ const initialState = {
   name: "",
   email: "",
   token: "",
-  statusCode: ""
+  statusCode: 200
 };
 
 export default function login(state = initialState, action) {

@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import DayCarousel from "../../components/DayCarousel";
 
-const UserInfoView = ({ name, events, userList }) => {
+const UserInfoView = ({ name, events }) => {
   return (
-    <div>
-      <h1>Calendrier de {name}</h1>
+    <>
+      <h1 style={{ marginLeft: "3vw" }}>Calendrier de {name}</h1>
       <DayCarousel events={events} />
-    </div>
+    </>
   );
 };
 

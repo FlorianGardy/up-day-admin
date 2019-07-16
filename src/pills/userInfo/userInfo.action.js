@@ -46,7 +46,7 @@ const getUserEventsFromApi = uuid => {
   const config = {
     method: "GET",
     baseURL,
-    url: `/events/${uuid}`,
+    url: `/users/${uuid}/events`,
     headers
   };
   return Axios.request(config)

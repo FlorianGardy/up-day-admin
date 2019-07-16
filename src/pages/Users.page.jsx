@@ -2,22 +2,29 @@ import React from "react";
 import Users from "../pills/users/user.container";
 import AddUser from "../pills/addUser/addUser.container";
 import SearchBar from "../pills/searchBar/searchBar.container";
-import { Menu, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
+import TitleMenu from "../components/TitleMenu";
 
 const UsersPage = () => {
-	return (
-		<>
-		<Table>
-			<Table.Header>
-				<Table.Cell><AddUser /></Table.Cell>
-				<Table.Cell textAlign="right"><SearchBar /></Table.Cell>
-			</Table.Header>
-		</Table>
-		<Table>
-			<Users />
-		</Table>
-		</>
-	);
+  return (
+    <>
+      <TitleMenu />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "Space-between",
+          width: "94%",
+          margin: "auto"
+        }}
+      >
+        <AddUser />
+        <SearchBar />
+      </div>
+      <Table>
+        <Users />
+      </Table>
+    </>
+  );
 };
 
 export default UsersPage;
