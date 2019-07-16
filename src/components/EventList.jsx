@@ -2,23 +2,38 @@ import React from "react";
 import PropTypes from "prop-types";
 import EventTable from "./EventTable";
 
+
+const _style = {
+  height: "50vMin",
+  overflow: "auto"
+};
+
 const EventList = ({ events }) => {
   return (
-    <div
-      style={{
-        minHeight: "50vmin",
-        overflowY: "auto"
-      }}
-    >
-      {events.map((event, i) => (
-        <EventTable key={i} {...event} />
+    <div style={_style}>
+      {events.map(({ date, type, nature, context, volume, comment }, i) => (
+        <EventTable
+          key={i}
+          {...{ date, type, nature, context, volume, comment }}
+        />
       ))}
     </div>
   );
 };
 
 EventList.propTypes = {
-  events: PropTypes.array.isRequired
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequierd,
+      type: PropTypes.string.isRequierd,
+      nature: PropTypes.string.isRequierd,
+      volume: PropTypes.string.isRequierd,
+      context: PropTypes.arrayOf(PropTypes.string),
+      comment: PropTypes.string,
+      uuid: PropTypes.string.isRequierd
+    })
+  ).isRequired
 };
 
 export default EventList;

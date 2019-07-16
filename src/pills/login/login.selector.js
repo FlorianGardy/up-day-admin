@@ -2,7 +2,7 @@ export function getUuid(state) {
   return state.LoginReducer.uuid;
 }
 
-export function getName(state) {
+export function getNameSelector(state) {
   return state.LoginReducer.name;
 }
 

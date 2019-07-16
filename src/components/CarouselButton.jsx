@@ -7,25 +7,19 @@ const button = {
 	textAlign: "center",
   margin: "0",
   padding: "0"
-}
-
+};
 
 const CarouselButton = ({ icon, onClick }) => {
-	return (
-		<Button onClick={index => onClick(index - 1)} style={button}>
-			<Icon
-				name={icon}
-        size="big"
-        color="orange"
-        fitted
-			/>
-		</Button>
-	);
+  return (
+    <Button onClick={() => onClick()} style={button}>
+      <Icon name={icon} size="big" color="orange" fitted />
+    </Button>
+  );
 };
 
 CarouselButton.propTypes = {
-	icon: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired
+  icon: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default CarouselButton;

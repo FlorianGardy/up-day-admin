@@ -42,6 +42,7 @@ EventCard.propTypes = {
   date: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   nature: PropTypes.string.isRequired,
+  volume: PropTypes.string.isRequired,
   context: PropTypes.array,
   comment: PropTypes.string
 };

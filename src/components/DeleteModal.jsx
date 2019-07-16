@@ -1,55 +1,62 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
-export default class ModalExampleControlled extends Component {
-  state = { modalOpen: false };
+const DELETE_MESSAGE = `Voulez vous vraiment supprimer cet utilisateur de la base de donnée ?`;
+const TITLE = "Suppression d'un utilisateur";
+const CONFIRM = "oui";
+const REFUSE = "non";
 
-  handleOpen = () => this.setState({ modalOpen: true });
+const DeleteModal = ({ deleteUser, name, uuid }) => {
+  const [modalOpen, setModalOpen] = useState(false);
 
-  handleClose = () => this.setState({ modalOpen: false });
-
-  handleDelete = async uuid => {
-    await this.props.deleteUser(uuid);
-    this.setState({ modalOpen: false });
+  const handleCloseWithDelete = async uuid => {
+    await deleteUser(uuid);
+    setModalOpen(false);
   };
 
-  render() {
-    return (
-      <Modal
-        trigger={
-          <Icon
-            link
-            size="large"
-            name="trash alternate outline"
-            onClick={this.handleOpen}
-            color="orange"
-          />
-        }
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
-        basic
-        size="small"
-      >
-        <Header icon="browser" content="Suppression d'un utilisateur" />
-        <Modal.Content>
-          <h3>
-            Voulez vous vraiment supprmier <em>{this.props.name}</em> de la base
-            de donnée ?
-          </h3>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            color="red"
-            onClick={uuid => this.handleDelete(this.props.uuid)}
-            inverted
-          >
-            <Icon name="checkmark" /> Oui
-          </Button>
-          <Button color="green" onClick={this.handleClose} inverted>
-            <Icon name="checkmark" /> Non
-          </Button>
-        </Modal.Actions>
-      </Modal>
-    );
-  }
-}
+  return (
+    <Modal
+      trigger={
+        <Icon
+          link
+          size="large"
+          name="trash alternate outline"
+          onClick={() => setModalOpen(true)}
+          color="orange"
+        />
+      }
+      open={modalOpen}
+      onClose={() => setModalOpen(false)}
+      basic
+      size="small"
+    >
+      <Header icon="browser" content={TITLE} />
+      <Modal.Content>
+        <h3>{DELETE_MESSAGE}</h3>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
+          color="red"
+          onClick={uuid => handleCloseWithDelete(uuid)}
+          inverted
+        >
+          <Icon name="checkmark" />
+          {CONFIRM}
+        </Button>
+        <Button color="green" onClick={() => setModalOpen(false)} inverted>
+          <Icon name="checkmark" />
+          {REFUSE}
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  );
+};
+
+DeleteModal.propTypes = {
+  deleteUser: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired
+};
+
+export default DeleteModal;

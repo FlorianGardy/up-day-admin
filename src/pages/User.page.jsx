@@ -6,17 +6,19 @@ import { Button } from "semantic-ui-react";
 import UserInfoContainer from "../pills/userInfo/userInfo.container";
 import TitleMenu from "../components/TitleMenu";
 
+const _buttonContainer = { width: "90vw", margin: "3vmin 5vw"}
+const _buttonStyle = {width:"25vw"}
 
 const UserPage = ({ match }) => {
   return (
     <div>
       <TitleMenu />
-        <div style={{ width: "90vw", margin: "3vmin 5vw"}}>
+        <div style={_buttonContainer}>
         <Button
           as={Link}
           to="/users"
           color="orange"
-          style={{width:"25vw"}}
+          style={_buttonStyle}
         >
           Revenir aux utilisateurs
         </Button>
