@@ -7,8 +7,8 @@ const EventList = ({ events }) => {
   return (
     <div
       style={{
-        height: "50vmin",
-        overflow: "auto",
+        minHeight: "50vmin",
+        overflowY: "auto"
       }}
     >
       {events.map((event, i) => (

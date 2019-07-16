@@ -4,7 +4,7 @@ import { Button, Icon } from "semantic-ui-react";
 
 const button = {
   backgroundColor: "transparent",
-  textAlign: "center",
+	textAlign: "center",
   margin: "0",
   padding: "0"
 }

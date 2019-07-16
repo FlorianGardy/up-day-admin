@@ -8,7 +8,7 @@ const UserInfoView = ({ name, events }) => {
   return (
     <>
       <Segment style={{ width: "90vw", margin: "3vmin 5vw", padding:"1vmin"}}>
-        <h1 style={{ textAlign:"center", fontSize:"1.5rem" }}>Identifiant n° {name}</h1>
+        <h2 style={{ textAlign:"center", fontSize:"1.2rem" }}>Identifiant n° {name}</h2>
       </Segment>
         <DayCarousel events={events} />
       </>
