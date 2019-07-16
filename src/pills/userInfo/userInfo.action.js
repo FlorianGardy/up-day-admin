@@ -1,7 +1,12 @@
 import Axios from "axios";
 import { getAPIconfig } from "../../functions/axiosConfig";
 export const USER_EVENTS = "@userInfo/USER_EVENTS";
+export const CLEAR_USER_EVENTS = "@userInfo/CLEAR_USER_EVENTS";
 export const USER_NAME = "@userInfo/USER_NAME";
+
+export const clearUserEvents = () => {
+  return { type: CLEAR_USER_EVENTS };
+};
 
 export const updateUserEvents = userEvents => {
   return { type: USER_EVENTS, userEvents };

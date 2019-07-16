@@ -25,7 +25,6 @@ const UserInfoContainer = ({
 const mapStateToProps = state => {
   return {
     userEventsGroupedByDay: getUserEventsGroupedByDay(state),
-    userList: fetchUserData(state),
     userName: getUserName(state)
   };
 };
