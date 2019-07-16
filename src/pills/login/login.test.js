@@ -1,6 +1,6 @@
 import { UPDATE_USER, updateUser } from "./login.action";
 import login from "./login.reducer";
-import { getUuid, getName, getEmail, getToken } from "./login.selector";
+import { getUuid, getNameSelector, getEmail, getToken } from "./login.selector";
 
 describe("# Login", () => {
   describe("## action", () => {
@@ -55,7 +55,7 @@ describe("# Login", () => {
     });
     describe("Should return Chuck Norris as name", () => {
       const store = { LoginReducer: { name: "Chuck Norris" } };
-      expect(getName(store)).toEqual("Chuck Norris");
+      expect(getNameSelector(store)).toEqual("Chuck Norris");
     });
     describe("Should return 00tfhz555z00z198zdiznd as token", () => {
       const store = { LoginReducer: { token: "00tfhz555z00z198zdiznd" } };

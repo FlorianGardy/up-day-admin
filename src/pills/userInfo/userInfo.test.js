@@ -1,7 +1,8 @@
 import {
   USER_EVENTS,
-  updateUserEvents,
   USER_NAME,
+  CLEAR_USER_EVENTS,
+  updateUserEvents,
   updateUserName
 } from "./userInfo.action";
 import UserEventsReducer from "./userInfo.reducer";
@@ -78,6 +79,18 @@ describe("# UserInfo", () => {
         UserEventsReducer({ userName: "" }, { type: USER_NAME, userName })
       ).toEqual({
         userName: userName
+      });
+    });
+
+    it("should clear the user events when the action CLEAR_USER_EVENTS is passed in", () => {
+      const userEvents = [];
+      expect(
+        UserEventsReducer(
+          { userEvents: ["Any", "random", "items"] },
+          { type: CLEAR_USER_EVENTS }
+        )
+      ).toEqual({
+        userEvents
       });
     });
   });

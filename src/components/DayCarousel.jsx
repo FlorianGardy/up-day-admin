@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { CardGroup } from "semantic-ui-react";
@@ -15,9 +15,15 @@ const _carousel = {
 const NUMBER_OF_DISPLAYED_CARDS = 3;
 
 const DayCarousel = ({ events }) => {
-  const [currentIndex, setCurrentIndex] = useState(
-    events.length + NUMBER_OF_DISPLAYED_CARDS - 1
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (events.length > NUMBER_OF_DISPLAYED_CARDS) {
+      setCurrentIndex(events.length - NUMBER_OF_DISPLAYED_CARDS);
+    } else {
+      setCurrentIndex(0);
+    }
+  }, [events]);
 
   return (
     <div style={_carousel}>
@@ -28,9 +34,9 @@ const DayCarousel = ({ events }) => {
       <CardGroup stackable centered itemsPerRow={NUMBER_OF_DISPLAYED_CARDS}>
         {events
           .filter(
-            day =>
-              events.indexOf(day) < currentIndex + NUMBER_OF_DISPLAYED_CARDS &&
-              events.indexOf(day) >= currentIndex
+            (day, index) =>
+              index >= currentIndex &&
+              index < currentIndex + NUMBER_OF_DISPLAYED_CARDS
           )
           .map((day, i) => (
             <DayCard key={i} day={day} />

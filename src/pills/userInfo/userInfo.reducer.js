@@ -1,4 +1,4 @@
-import { USER_EVENTS, USER_NAME } from "./userInfo.action";
+import { USER_EVENTS, USER_NAME, CLEAR_USER_EVENTS } from "./userInfo.action";
 
 const initialState = {
   userEvents: [],
@@ -14,6 +14,8 @@ export default function UserEventsReducer(state = initialState, action) {
         return a > b ? 1 : a < b ? -1 : 0;
       });
       return { ...state, userEvents: action.userEvents };
+    case CLEAR_USER_EVENTS:
+      return { ...state, userEvents: [] };
     case USER_NAME:
       return { ...state, userName: action.userName };
     default:

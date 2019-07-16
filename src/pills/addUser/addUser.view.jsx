@@ -49,6 +49,7 @@ const AddUserView = ({
               value={password}
               onChange={e => updatePass(e.target.value)}
             />
+            {/* This input have been disable because of personal data problematique */}
             {/* <Form.Input
             type="email"
             placeholder="E-mail"
