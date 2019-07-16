@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Table } from "semantic-ui-react";
 import EventList from "./EventList";
 
 const DayCard = ({ day }) => {
@@ -13,12 +13,14 @@ const DayCard = ({ day }) => {
         {date}
       </Card.Content>
       <Card.Content textAlign="center" style ={{ padding:"0", height:"10vh" }}>
+      <Table celled style={{padding:"0", maxWidth:"100%"}} compact size="small" >
         {natureEntries.map((n, i) => (
-          <div key={i}>
+          <Table.Cell key={i}>
             {n[1]} {n[0]}
             {n[1] > 1 && "s"}
-          </div>
+          </Table.Cell>
         ))}
+        </Table>
       </Card.Content>
       <Card.Content style={{ padding:"0"}} >
         <EventList events={events} />

@@ -1,5 +1,4 @@
 import React from "react";
-import EventCard from "./EventCard";
 import PropTypes from "prop-types";
 import EventTable from "./EventTable";
 
@@ -12,7 +11,6 @@ const EventList = ({ events }) => {
       }}
     >
       {events.map((event, i) => (
-        // <EventCard key={i} {...event} />
         <EventTable key={i} {...event} />
       ))}
     </div>
