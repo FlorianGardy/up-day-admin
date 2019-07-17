@@ -5,7 +5,7 @@ const initialState = {
   userName: ""
 };
 
-export default function UserEventsReducer(state = initialState, action) {
+export default function UserEvents(state = initialState, action) {
   switch (action.type) {
     case USER_EVENTS:
       action.userEvents.sort(function(a, b) {
