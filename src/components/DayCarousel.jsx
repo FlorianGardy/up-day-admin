@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { CardGroup } from "semantic-ui-react";
 
-import { getUserEvents } from "../pills/userInfo/userInfo.selector";
 import DayCard from "./DayCard";
 import CarouselButton from "./CarouselButton";
 
-const _carousel = {
+const carouselStyle = {
   display: "grid",
   gridTemplateColumns: "5vw 90vw 5vw"
 };
@@ -26,7 +24,7 @@ const DayCarousel = ({ events }) => {
   }, [events]);
 
   return (
-    <div style={_carousel}>
+    <div style={carouselStyle}>
       <CarouselButton
         icon="chevron left"
         onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
@@ -57,14 +55,25 @@ const DayCarousel = ({ events }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    userEvents: getUserEvents(state)
-  };
-};
-
 DayCarousel.propTypes = {
-  userEvents: PropTypes.array.isRequired
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      events: PropTypes.arrayOf(
+        PropTypes.shape({
+          comment: PropTypes.string,
+          context: PropTypes.arrayOf(PropTypes.string),
+          date: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          nature: PropTypes.string.isRequired,
+          type: PropTypes.string.isRequired,
+          uuid: PropTypes.string.isRequired,
+          volume: PropTypes.string.isRequired
+        })
+      ),
+      natureCounter: PropTypes.objectOf(PropTypes.number)
+    })
+  ).isRequired
 };
 
-export default connect(mapStateToProps)(DayCarousel);
+export default DayCarousel;
