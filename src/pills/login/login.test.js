@@ -1,6 +1,11 @@
 import { UPDATE_USER, updateUser } from "./login.action";
 import login from "./login.reducer";
-import { getUuid, getNameSelector, getEmail, getToken } from "./login.selector";
+import {
+  getUuidSelector,
+  getNameSelector,
+  getEmailSelector,
+  getTokenSelector
+} from "./login.selector";
 
 describe("# Login", () => {
   describe("## action", () => {
@@ -50,20 +55,20 @@ describe("# Login", () => {
 
   describe("## selector", () => {
     describe("Should return 1111-aaaaa-1111 as uuid", () => {
-      const store = { LoginReducer: { uuid: "1111-aaaaa-1111" } };
-      expect(getUuid(store)).toEqual("1111-aaaaa-1111");
+      const store = { Login: { uuid: "1111-aaaaa-1111" } };
+      expect(getUuidSelector(store)).toEqual("1111-aaaaa-1111");
     });
     describe("Should return Chuck Norris as name", () => {
-      const store = { LoginReducer: { name: "Chuck Norris" } };
+      const store = { Login: { name: "Chuck Norris" } };
       expect(getNameSelector(store)).toEqual("Chuck Norris");
     });
     describe("Should return 00tfhz555z00z198zdiznd as token", () => {
-      const store = { LoginReducer: { token: "00tfhz555z00z198zdiznd" } };
-      expect(getToken(store)).toEqual("00tfhz555z00z198zdiznd");
+      const store = { Login: { token: "00tfhz555z00z198zdiznd" } };
+      expect(getTokenSelector(store)).toEqual("00tfhz555z00z198zdiznd");
     });
     describe("Should return god@gmail.com as email", () => {
-      const store = { LoginReducer: { email: "god@gmail.com" } };
-      expect(getEmail(store)).toEqual("god@gmail.com");
+      const store = { Login: { email: "god@gmail.com" } };
+      expect(getEmailSelector(store)).toEqual("god@gmail.com");
     });
   });
 });
