@@ -3,8 +3,8 @@ import deleteUser from "../../API/deleteUser";
 
 export const UPDATE_USERS_LIST = "@user/UPDATE_USERS_LIST";
 
-export const updateUsersList = userList => {
-  return { type: UPDATE_USERS_LIST, userList };
+export const updateUsersList = usersList => {
+  return { type: UPDATE_USERS_LIST, usersList };
 };
 
 export function getUsersList() {

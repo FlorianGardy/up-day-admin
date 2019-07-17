@@ -7,7 +7,7 @@ const initalState = {
 export default function Users(state = initalState, action) {
   switch (action.type) {
     case UPDATE_USERS_LIST:
-      return { ...state, usersList: action.userList };
+      return { ...state, usersList: action.usersList };
     default:
       return state;
   }
