@@ -10,7 +10,7 @@ import UserView from "./users.view";
 
 const UsersContainer = ({
   updateUserList,
-  deleteUserFromDB,
+  handleDeleteUser,
   users,
   searchValue,
   clearUserEvents
