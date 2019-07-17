@@ -1,18 +1,19 @@
-export function getUuid(state) {
-  return state.LoginReducer.uuid;
+export function getUuidSelector(state) {
+  return state.Login.uuid;
 }
 
 export function getNameSelector(state) {
-  return state.LoginReducer.name;
+  return state.Login.name;
 }
 
-export function getEmail(state) {
-  return state.LoginReducer.email;
+export function getEmailSelector(state) {
+  return state.Login.email;
 }
 
-export function getToken(state) {
-  return state.LoginReducer.token;
+export function getTokenSelector(state) {
+  return state.Login.token;
 }
-export function getStatusCode(state) {
-  return state.LoginReducer.statusCode;
+
+export function getStatusCodeSelector(state) {
+  return state.Login.statusCode;
 }
