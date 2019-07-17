@@ -1,7 +1,7 @@
-import { getUserCredentialsFromAPI } from "../../functions/getUserCredentialsFromAPI";
+import { getUserCredentials } from "../../API/getUserCredentials";
 
-export const UPDATE_USER = "@login/UPDATE_USER";
-export const UPDATE_USER_ERROR = "@login/UPDATE_USER_ERROR";
+export const UPDATE_USER = "@Login/UPDATE_USER";
+export const UPDATE_USER_ERROR = "@Login/UPDATE_USER_ERROR";
 
 export const updateUser = (uuid, name, email, token) => {
   return { type: UPDATE_USER, payload: { uuid, name, email, token } };
@@ -11,9 +11,9 @@ export const updateUserError = error => {
   return { type: UPDATE_USER_ERROR, payload: error };
 };
 
-export const getUserCredentials = (userName, UserPass) => {
+export const checkUserCredentials = (userName, UserPass) => {
   return async (dispatch, getState) => {
-    const res = await getUserCredentialsFromAPI(userName, UserPass);
+    const res = await getUserCredentials(userName, UserPass);
     if (res === 400) {
       dispatch(updateUserError(res));
     } else {
