@@ -2,8 +2,13 @@ import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import reducer from "./reducers";
 
+import { loadState, saveState } from "./localstorage";
+
+const peristantState = loadState();
+
 let store = createStore(
   reducer,
+  peristantState,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__
@@ -11,5 +16,9 @@ let store = createStore(
       : a => a
   )
 );
+
+store.subscribe(() => {
+  saveState({ Login: store.getState().Login });
+});
 
 export default store;
