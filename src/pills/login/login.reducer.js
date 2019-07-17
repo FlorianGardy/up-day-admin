@@ -6,9 +6,9 @@ const initialState = {
   statusCode: 200
 };
 
-export default function login(state = initialState, action) {
+export default function Login(state = initialState, action) {
   switch (action.type) {
-    case "@login/UPDATE_USER":
+    case "@Login/UPDATE_USER":
       return {
         ...state,
         uuid: action.payload.uuid,
@@ -17,7 +17,7 @@ export default function login(state = initialState, action) {
         token: action.payload.token,
         statusCode: 200
       };
-    case "@login/UPDATE_USER_ERROR":
+    case "@Login/UPDATE_USER_ERROR":
       return {
         ...state,
         statusCode: action.payload
