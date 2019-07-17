@@ -1,8 +1,8 @@
 import React from "react";
 import LoginContainer from "../pills/login/login.container";
 
-const Login = () => {
+const LoginPage = () => {
   return <LoginContainer />;
 };
 
-export default Login;
+export default LoginPage;
