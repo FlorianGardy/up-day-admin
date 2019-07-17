@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 
 import EventTable from "./EventTable";
 
-
-const _style = {
+const listStyle = {
   overflow: "auto",
   maxWidth: "100%"
 };
 
 const EventList = ({ events }) => {
   return (
-    <div style={_style}>
+    <div style={listStyle}>
       {events.map(({ date, type, nature, context, volume, comment }, i) => (
         <EventTable
           key={i}
