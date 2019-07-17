@@ -7,17 +7,15 @@ import "moment/locale/fr";
 
 import DeleteModal from "./DeleteModal";
 
-const UserTab = ({
-  history,
-  name,
-  uuid,
-  password,
-  createdAt,
-  token,
-  role,
-  deleteUser,
-  email
-}) => {
+const isAdminColor = role => {
+  if (role === "admin") {
+    return { color: "#f2711c" };
+  }
+};
+
+const UserTab = ({ name, uuid, createdAt, token, role, deleteUser, email }) => {
+  const nameStyle = isAdminColor(role);
+
   return (
     <Table.Body>
       <Table.Row textAlign="center">
@@ -26,7 +24,7 @@ const UserTab = ({
             <Icon name="calendar alternate outline" size="large" color="grey" />
           </NavLink>
         </Table.Cell>
-        <Table.Cell>{name}</Table.Cell>
+        <Table.Cell style={nameStyle}>{name}</Table.Cell>
         <Table.Cell>{moment(createdAt).format("DD/MM/YYYY")}</Table.Cell>
         {/* This input have been disable because of personal data problematique */}
         {/* <Table.Cell>{email ? email : "non communiqué"}</Table.Cell> */}
@@ -46,7 +44,6 @@ UserTab.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string,
   uuid: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   deleteUser: PropTypes.func.isRequired

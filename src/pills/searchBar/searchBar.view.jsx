@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Input } from "semantic-ui-react";
 
+const PLACEHOLDER = "Chercher un identifiant";
+const inputStyle = { width: "25vw" };
+
 const SearchBarView = ({ handleChange, searchValue }) => {
   return (
     <Input
       icon="search"
-      placeholder="Chercher un identifiant"
+      placeholder={PLACEHOLDER}
       value={searchValue}
       onChange={e => handleChange(e.target.value)}
-      style={{width:"25vw"}}
+      style={inputStyle}
     />
   );
 };

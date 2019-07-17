@@ -1,13 +1,13 @@
 import moment from "moment";
 
-export const getUserEvents = state => state.UserEventsReducer.userEvents;
+export const getUserEventsSelector = state => state.UserEvents.userEvents;
 
-export const getUserName = state => state.UserEventsReducer.userName;
+export const getUserNameSelector = state => state.UserEvents.userName;
 
 //TODO : test it
 
 export const getUserEventsGroupedByDay = state => {
-  const events = getUserEvents(state);
+  const events = getUserEventsSelector(state);
 
   return _sortDaysByDate(
     _arrDaysWithCountedNature(_arrayOfDays(_eventsGroupedByDay(events)))
@@ -55,7 +55,7 @@ const _arrayOfDays = dictionary => {
 };
 
 const _arrDaysWithCountedNature = events => {
-  const natureCount = "natureCount";
+  const natureCount = "natureCounter";
   events.map(day => {
     return day.events.reduce((a, e) => {
       let eventNature = e.nature;

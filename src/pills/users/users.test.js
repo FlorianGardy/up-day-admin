@@ -1,11 +1,11 @@
-import { UPDATE_USER_LIST, updateUserList } from "./user.action";
-import { getUserList } from "./user.selector";
-import UserReducer from "./user.reducer";
+import { UPDATE_USERS_LIST, updateUsersList } from "./users.action";
+import { getUsersListSelector } from "./users.selector";
+import Users from "./users.reducer";
 
 describe("#User", () => {
   describe("## actions", () => {
     it("should create an action to update users list", () => {
-      const userList = [
+      const usersList = [
         {
           uuid: "e0f48fb0-9f1e-11e9-a0b8-cdce88839668",
           name: "Florian",
@@ -19,10 +19,10 @@ describe("#User", () => {
         }
       ];
       const expectedAction = {
-        type: UPDATE_USER_LIST,
-        userList
+        type: UPDATE_USERS_LIST,
+        usersList
       };
-      expect(updateUserList(userList)).toEqual(expectedAction);
+      expect(updateUsersList(usersList)).toEqual(expectedAction);
     });
   });
 
@@ -31,10 +31,10 @@ describe("#User", () => {
       const initialState = {
         userList: []
       };
-      expect(UserReducer(initialState, {})).toEqual(initialState);
+      expect(Users(initialState, {})).toEqual(initialState);
     });
-    it("should handle UPDATE_USER_LIST", () => {
-      const userList = [
+    it("should handle UPDATE_USERS_LIST", () => {
+      const usersList = [
         {
           uuid: "e0f48fb0-9f1e-11e9-a0b8-cdce88839668",
           name: "Florian",
@@ -48,19 +48,19 @@ describe("#User", () => {
         }
       ];
       expect(
-        UserReducer({ userList: [] }, { type: UPDATE_USER_LIST, userList })
-      ).toEqual({ userList });
+        Users({ usersList: [] }, { type: UPDATE_USERS_LIST, usersList })
+      ).toEqual({ usersList });
     });
   });
 
   describe("## selector", () => {
     it("should return [] as userList", () => {
       const store = {
-        UserReducer: {
-          userList: []
+        Users: {
+          usersList: []
         }
       };
-      expect(getUserList(store)).toEqual([]);
+      expect(getUsersListSelector(store)).toEqual([]);
     });
   });
 });

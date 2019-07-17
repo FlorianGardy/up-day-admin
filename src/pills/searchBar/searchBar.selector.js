@@ -1,1 +1,1 @@
-export const getSearchValue = store => store.SearchBarReducer.searchValue;
+export const getSearchValueSelector = store => store.SearchBar.searchValue;

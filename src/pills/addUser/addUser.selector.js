@@ -1,5 +1,5 @@
-export const getAddUserName = store => store.AddUserReducer.name;
-export const getAddUserEmail = store => store.AddUserReducer.email;
-export const getAddUserPassword = store => store.AddUserReducer.password;
-export const getAddUserRole = store => store.AddUserReducer.role;
-export const getAddUserIsAdmin = store => store.AddUserReducer.isAdmin;
+export const getAddUserNameSelector = store => store.AddUser.name;
+export const getAddUserEmailSelector = store => store.AddUser.email;
+export const getAddUserPasswordSelector = store => store.AddUser.password;
+export const getAddUserRoleSelector = store => store.AddUser.role;
+export const getAddUserIsAdminSelector = store => store.AddUser.isAdmin;

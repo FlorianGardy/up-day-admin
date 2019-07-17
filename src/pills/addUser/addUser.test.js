@@ -15,13 +15,13 @@ import {
   RESET
 } from "./addUser.action";
 import {
-  getAddUserName,
-  getAddUserPassword,
-  getAddUserRole,
-  getAddUserIsAdmin,
-  getAddUserEmail
+  getAddUserNameSelector,
+  getAddUserPasswordSelector,
+  getAddUserRoleSelector,
+  getAddUserIsAdminSelector,
+  getAddUserEmailSelector
 } from "./addUser.selector";
-import AddUserReducer from "./addUser.reducer";
+import AddUser from "./addUser.reducer";
 
 describe("# AddUser", () => {
   describe("## actions", () => {
@@ -81,28 +81,24 @@ describe("# AddUser", () => {
         role: "user",
         isAdmin: false
       };
-      expect(AddUserReducer(initialState, {})).toEqual(initialState);
+      expect(AddUser(initialState, {})).toEqual(initialState);
     });
     it("should handle UPDATE_NAME", () => {
       const name = "Chuck Norris";
-      expect(AddUserReducer({ name: "" }, { type: UPDATE_NAME, name })).toEqual(
-        {
-          name: "Chuck Norris"
-        }
-      );
+      expect(AddUser({ name: "" }, { type: UPDATE_NAME, name })).toEqual({
+        name: "Chuck Norris"
+      });
     });
     it("should handle UPDATE_EMAIL", () => {
       const email = "gaga@laydy.com";
-      expect(
-        AddUserReducer({ email: "" }, { type: UPDATE_EMAIL, email })
-      ).toEqual({
+      expect(AddUser({ email: "" }, { type: UPDATE_EMAIL, email })).toEqual({
         email: "gaga@laydy.com"
       });
     });
     it("should handle UPDATE_PASS", () => {
       const password = "monpass";
       expect(
-        AddUserReducer({ password: "" }, { type: UPDATE_PASS, password })
+        AddUser({ password: "" }, { type: UPDATE_PASS, password })
       ).toEqual({
         password: "monpass"
       });
@@ -110,7 +106,7 @@ describe("# AddUser", () => {
     it("should handle UPDATE_ADMIN", () => {
       const isAdmin = true;
       expect(
-        AddUserReducer({ isAdmin: false }, { type: UPDATE_ADMIN, isAdmin })
+        AddUser({ isAdmin: false }, { type: UPDATE_ADMIN, isAdmin })
       ).toEqual({
         isAdmin: true
       });
@@ -118,7 +114,7 @@ describe("# AddUser", () => {
     it("should handle UPDATE_ROLE", () => {
       const role = "admin";
       expect(
-        AddUserReducer({ role: "standart" }, { type: UPDATE_ROLE, role })
+        AddUser({ role: "standart" }, { type: UPDATE_ROLE, role })
       ).toEqual({
         role: "admin"
       });
@@ -131,7 +127,7 @@ describe("# AddUser", () => {
         role: "admin",
         isAdmin: true
       };
-      expect(AddUserReducer(state, { type: RESET })).toEqual({
+      expect(AddUser(state, { type: RESET })).toEqual({
         name: "",
         password: "",
         email: "",
@@ -144,33 +140,33 @@ describe("# AddUser", () => {
   describe("## selector", () => {
     it("should return Chuck Norris as username", () => {
       const initialStore = {
-        AddUserReducer: { name: "Chuck Norris" }
+        AddUser: { name: "Chuck Norris" }
       };
-      expect(getAddUserName(initialStore)).toEqual("Chuck Norris");
+      expect(getAddUserNameSelector(initialStore)).toEqual("Chuck Norris");
     });
     it("should return mypass as password", () => {
       const initialStore = {
-        AddUserReducer: { password: "mypass" }
+        AddUser: { password: "mypass" }
       };
-      expect(getAddUserPassword(initialStore)).toEqual("mypass");
+      expect(getAddUserPasswordSelector(initialStore)).toEqual("mypass");
     });
     it("should return admin as role", () => {
       const initialStore = {
-        AddUserReducer: { role: "admin" }
+        AddUser: { role: "admin" }
       };
-      expect(getAddUserRole(initialStore)).toEqual("admin");
+      expect(getAddUserRoleSelector(initialStore)).toEqual("admin");
     });
     it("should return true as isAdmin", () => {
       const initialStore = {
-        AddUserReducer: { isAdmin: true }
+        AddUser: { isAdmin: true }
       };
-      expect(getAddUserIsAdmin(initialStore)).toEqual(true);
+      expect(getAddUserIsAdminSelector(initialStore)).toEqual(true);
     });
     it("should return mail@gmail.com as email", () => {
       const initialStore = {
-        AddUserReducer: { email: "mail@gmail.com" }
+        AddUser: { email: "mail@gmail.com" }
       };
-      expect(getAddUserEmail(initialStore)).toEqual("mail@gmail.com");
+      expect(getAddUserEmailSelector(initialStore)).toEqual("mail@gmail.com");
     });
   });
 });

@@ -1,5 +1,5 @@
-export const UPDATE_SEARCH_VALUE = "@searchBar/UPDATE_SEARCH_VALUE";
-export const RESET_SEARCH_VALUE = "@searchBar/RESET_SEARCH_VALUE";
+export const UPDATE_SEARCH_VALUE = "@SearchBar/UPDATE_SEARCH_VALUE";
+export const RESET_SEARCH_VALUE = "@SearchBar/RESET_SEARCH_VALUE";
 
 export const updateSearchValue = searchValue => {
   return { type: UPDATE_SEARCH_VALUE, searchValue };

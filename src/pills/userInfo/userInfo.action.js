@@ -1,5 +1,6 @@
-import Axios from "axios";
-import { getAPIconfig } from "../../functions/axiosConfig";
+import getEvents from "../../API/getEvents";
+import getUserByUuid from "../../API/getUserByUuid";
+
 export const USER_EVENTS = "@userInfo/USER_EVENTS";
 export const CLEAR_USER_EVENTS = "@userInfo/CLEAR_USER_EVENTS";
 export const USER_NAME = "@userInfo/USER_NAME";
@@ -16,52 +17,16 @@ export const updateUserName = userName => {
   return { type: USER_NAME, userName };
 };
 
-export function fetchUserData(uuid) {
+export function fetchUserEvents(uuid) {
   return async dispatch => {
-    const userEvents = await getUserEventsFromApi(uuid);
+    const userEvents = await getEvents(uuid);
     dispatch(updateUserEvents(userEvents));
   };
 }
 
 export function fetchUserName(uuid) {
   return async dispatch => {
-    const { name } = await getUserNameFromApi(uuid);
+    const { name } = await getUserByUuid(uuid);
     dispatch(updateUserName(name));
   };
 }
-
-const getUserNameFromApi = uuid => {
-  const { baseURL, headers } = getAPIconfig();
-  const config = {
-    method: "GET",
-    baseURL,
-    url: `/users/${uuid}`,
-    headers
-  };
-  return Axios.request(config)
-    .then(res => dataSelection(res))
-    .catch(err => {
-      localStorage.clear();
-      return (window.location.href = "/login");
-    });
-};
-
-const getUserEventsFromApi = uuid => {
-  const { baseURL, headers } = getAPIconfig();
-  const config = {
-    method: "GET",
-    baseURL,
-    url: `/users/${uuid}/events`,
-    headers
-  };
-  return Axios.request(config)
-    .then(res => dataSelection(res))
-    .catch(err => {
-      localStorage.clear();
-      return (window.location.href = "/login");
-    });
-};
-
-const dataSelection = response => {
-  return response.data;
-};

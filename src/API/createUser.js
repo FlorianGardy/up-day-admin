@@ -1,7 +1,9 @@
 import Axios from "axios";
-import { getAPIconfig } from "./axiosConfig";
 
-export const addUserToDb = (name, password, email, role) => {
+import { getAPIconfig } from "./axiosConfig";
+import { manageError } from "./manageErrors";
+
+export default function createUser(name, password, role, email) {
   const { baseURL, headers } = getAPIconfig();
   const config = {
     method: "POST",
@@ -15,8 +17,7 @@ export const addUserToDb = (name, password, email, role) => {
       role
     }
   };
-  return Axios.request(config).catch(err => {
-    localStorage.clear();
-    return (window.location.href = "/login");
+  return Axios.request(config).catch(error => {
+    return manageError(error);
   });
-};
+}

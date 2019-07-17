@@ -15,7 +15,7 @@ const initalState = {
   isAdmin: false
 };
 
-export default function AddUserReducer(state = initalState, action) {
+export default function AddUser(state = initalState, action) {
   switch (action.type) {
     case UPDATE_NAME:
       return { ...state, name: action.name };

@@ -1,61 +1,85 @@
 import React from "react";
 import { Button, Form, Grid, Header, Segment, Image } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
 import logoKineOrange from "../../assets/logoKineOrange.png";
 
+const errorMessageStyle = { color: "red", border: "none" };
 
-const LoginView = ({ onSubmit, statusCode }) => {
-  let styled = { color: "red" };
-  styled.opacity = statusCode !== 200 ? 1 : 0;
-  let errorMessage;
+const gridStyle = { height: "100vh" };
+const gridColumnStyle = { maxWidth: "450px" };
+const logoStyle = { width: "30%" };
+const titleStyle = { fontSize: "3rem", fontWeight: "bold", color: "#243330" };
+const subTitleStyle = { fontSize: "1.5rem" };
+const submitButtonStyle = { backgroundColor: "#243330" };
+
+const TITLE = "UP Day Admin";
+const SUBTITLE = "Bienvenue sur votre espace administrateur";
+const LOGIN_PLACEHOLDER = "Identifiant";
+const PASSWORD_PLACEHOLDER = "Mot de passe";
+
+const switchErrorMessage = statusCode => {
   switch (statusCode) {
     case 400:
-      errorMessage = "Identifiant ou mot de passe incorrecte";
-      break;
+      return "Identifiant ou mot de passe incorrecte";
     case 403:
-      errorMessage = "l'utilisateur n'est pas admin";
-      break;
+      return "l'utilisateur n'est pas admin";
     default:
-      errorMessage = "";
+      return "";
   }
+};
 
+const LoginView = ({ onSubmit, statusCode }) => {
+  let errorMessage = switchErrorMessage(statusCode);
   return (
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="#da4e0e" textAlign="center">
-          <Image src={logoKineOrange} alt="logo" style={{width:"30%"}} />
-          <h1 style={{fontSize:"3rem", fontWeight:"bold", color:"#243330"}}>UP Day Admin</h1>
-        <Header.Subheader style={{fontSize:"1.5rem"}}>Bienvenue sur votre espace administrateur</Header.Subheader>
-        <br/>
+    <Grid textAlign="center" style={gridStyle} verticalAlign="middle">
+      <Grid.Column style={gridColumnStyle}>
+        <Header textAlign="center">
+          <Image src={logoKineOrange} alt="logo" style={logoStyle} />
+          <h1 style={titleStyle}>{TITLE}</h1>
+          <Header.Subheader style={subTitleStyle}>{SUBTITLE}</Header.Subheader>
+          <br />
         </Header>
         <Form size="large" onSubmit={e => onSubmit(e)}>
           <Segment>
             <Form.Input
-              name="username"
               fluid
+              type="text"
+              name="username"
               icon="user"
               iconPosition="left"
-              placeholder="Identifiant"
+              placeholder={LOGIN_PLACEHOLDER}
             />
             <Form.Input
               fluid
+              type="password"
               name="password"
               icon="lock"
               iconPosition="left"
-              placeholder="Mot de passe"
-              type="password"
+              placeholder={PASSWORD_PLACEHOLDER}
             />
-            <Button style={{backgroundColor:"#243330"}} inverted fluid size="large" type="submit">
+            <Button
+              fluid
+              inverted
+              type="submit"
+              style={submitButtonStyle}
+              size="large"
+            >
               Se connecter
             </Button>
           </Segment>
+          <div style={errorMessageStyle}>
+            <p>{errorMessage}</p>
+          </div>
         </Form>
-        <Segment style={styled}>
-          <p>{errorMessage}</p>
-        </Segment>
       </Grid.Column>
     </Grid>
   );
+};
+
+LoginView.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  statusCode: PropTypes.number.isRequired
 };
 
 export default LoginView;

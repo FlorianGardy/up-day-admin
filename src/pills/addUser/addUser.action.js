@@ -1,9 +1,9 @@
-export const UPDATE_NAME = "@addUser/UPDATE_NAME";
-export const UPDATE_EMAIL = "@addUser/UPDATE_EMAIL";
-export const UPDATE_PASS = "@addUser/UPDATE_PASS";
-export const UPDATE_ADMIN = "@addUser/UPDATE_ADMIN";
-export const UPDATE_ROLE = "@addUser/UPDATE_ROLE";
-export const RESET = "@addUser/RESET";
+export const UPDATE_NAME = "@AddUser/UPDATE_NAME";
+export const UPDATE_EMAIL = "@AddUser/UPDATE_EMAIL";
+export const UPDATE_PASS = "@AddUser/UPDATE_PASS";
+export const UPDATE_ADMIN = "@AddUser/UPDATE_ADMIN";
+export const UPDATE_ROLE = "@AddUser/UPDATE_ROLE";
+export const RESET = "@AddUser/RESET";
 
 export const updateName = name => {
   return { type: UPDATE_NAME, name };

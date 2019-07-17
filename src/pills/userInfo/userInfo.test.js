@@ -5,8 +5,11 @@ import {
   updateUserEvents,
   updateUserName
 } from "./userInfo.action";
-import UserEventsReducer from "./userInfo.reducer";
-import { getUserEvents, getUserName } from "./userInfo.selector";
+import UserEvents from "./userInfo.reducer";
+import {
+  getUserEventsSelector,
+  getUserNameSelector
+} from "./userInfo.selector";
 
 describe("# UserInfo", () => {
   describe("## actions", () => {
@@ -48,7 +51,7 @@ describe("# UserInfo", () => {
         userEvents: [],
         userName: ""
       };
-      expect(UserEventsReducer(initialState, {})).toEqual(initialState);
+      expect(UserEvents(initialState, {})).toEqual(initialState);
     });
     it("should handle USER_EVENTS", () => {
       const userEvents = [
@@ -67,7 +70,7 @@ describe("# UserInfo", () => {
         }
       ];
       expect(
-        UserEventsReducer({ userEvents: [] }, { type: USER_EVENTS, userEvents })
+        UserEvents({ userEvents: [] }, { type: USER_EVENTS, userEvents })
       ).toEqual({
         userEvents: userEvents
       });
@@ -76,7 +79,7 @@ describe("# UserInfo", () => {
     it("should handle USER_NAME", () => {
       const userName = "Chuck Norris";
       expect(
-        UserEventsReducer({ userName: "" }, { type: USER_NAME, userName })
+        UserEvents({ userName: "" }, { type: USER_NAME, userName })
       ).toEqual({
         userName: userName
       });
@@ -85,7 +88,7 @@ describe("# UserInfo", () => {
     it("should clear the user events when the action CLEAR_USER_EVENTS is passed in", () => {
       const userEvents = [];
       expect(
-        UserEventsReducer(
+        UserEvents(
           { userEvents: ["Any", "random", "items"] },
           { type: CLEAR_USER_EVENTS }
         )
@@ -98,15 +101,15 @@ describe("# UserInfo", () => {
   describe("## selector", () => {
     it("should return [] as userEvents", () => {
       const initialStore = {
-        UserEventsReducer: { userEvents: [] }
+        UserEvents: { userEvents: [] }
       };
-      expect(getUserEvents(initialStore)).toEqual([]);
+      expect(getUserEventsSelector(initialStore)).toEqual([]);
     });
     it("should return Chuck Norris as userName", () => {
       const initialStore = {
-        UserEventsReducer: { userName: "ChuckNorris" }
+        UserEvents: { userName: "ChuckNorris" }
       };
-      expect(getUserName(initialStore)).toEqual("ChuckNorris");
+      expect(getUserNameSelector(initialStore)).toEqual("ChuckNorris");
     });
   });
 });

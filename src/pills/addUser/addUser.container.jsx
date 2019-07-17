@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+
 import {
   updateAdmin,
   updateName,
@@ -9,18 +10,18 @@ import {
   updateRole,
   resetAddUser
 } from "./addUser.action";
-import { getuserList } from "../users/user.action";
+import { getUsersList } from "../users/users.action";
 import AddUserView from "./addUser.view";
 import {
-  getAddUserName,
-  getAddUserPassword,
-  getAddUserRole,
-  getAddUserIsAdmin,
-  getAddUserEmail
+  getAddUserNameSelector,
+  getAddUserPasswordSelector,
+  getAddUserRoleSelector,
+  getAddUserIsAdminSelector,
+  getAddUserEmailSelector
 } from "./addUser.selector";
-import { addUserToDb } from "../../functions/addUserToDb";
+import createUser from "../../API/createUser";
 
-const AddUser = ({
+const AddUserContainer = ({
   name,
   email,
   password,
@@ -30,7 +31,7 @@ const AddUser = ({
   updateAdmin,
   role,
   updateRole,
-  getUserList,
+  getUsersList,
   isAdmin,
   resetAddUser
 }) => {
@@ -43,8 +44,8 @@ const AddUser = ({
   }, [updateRole, isAdmin]);
 
   const handleRegister = async (name, password, role, email) => {
-    await addUserToDb(name, password, email, role);
-    getUserList();
+    await createUser(name, password, role, email);
+    getUsersList();
     resetAddUser();
   };
 
@@ -64,13 +65,20 @@ const AddUser = ({
   );
 };
 
+AddUserContainer.propTypes = {
+  name: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = store => {
   return {
-    name: getAddUserName(store),
-    password: getAddUserPassword(store),
-    email: getAddUserEmail(store),
-    role: getAddUserRole(store),
-    isAdmin: getAddUserIsAdmin(store)
+    name: getAddUserNameSelector(store),
+    password: getAddUserPasswordSelector(store),
+    email: getAddUserEmailSelector(store),
+    role: getAddUserRoleSelector(store),
+    isAdmin: getAddUserIsAdminSelector(store)
   };
 };
 
@@ -81,25 +89,12 @@ const mapDispatchToProps = dispatch => {
     updateAdmin: isAdmin => dispatch(updateAdmin(isAdmin)),
     updatePass: password => dispatch(updatePass(password)),
     updateRole: role => dispatch(updateRole(role)),
-    getUserList: () => dispatch(getuserList()),
+    getUsersList: () => dispatch(getUsersList()),
     resetAddUser: () => dispatch(resetAddUser())
   };
-};
-
-AddUser.propTypes = {
-  name: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  isAdmin: PropTypes.bool.isRequired,
-  updateName: PropTypes.func.isRequired,
-  updatePass: PropTypes.func.isRequired,
-  updateAdmin: PropTypes.func.isRequired,
-  updateRole: PropTypes.func.isRequired,
-  getUserList: PropTypes.func.isRequired,
-  resetAddUser: PropTypes.func.isRequired
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddUser);
+)(AddUserContainer);
