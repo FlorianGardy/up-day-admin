@@ -1,33 +1,37 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 import SearchBarView from "./searchBar.view";
 import { updateSearchValue, resetSearchValue } from "./searchBar.action";
-import { getSearchValue } from "./searchBar.selector";
+import { getSearchValueSelector } from "./searchBar.selector";
 
-const SearchBar = ({ searchValue, updateSearchValue, resetSearchValue }) => {
-
+const SearchBarContainer = ({
+  searchValue,
+  updateSearchValue,
+  resetSearchValue
+}) => {
   useEffect(() => {
     resetSearchValue();
   }, [resetSearchValue]);
 
-  return (
-      <SearchBarView value={searchValue} handleChange={updateSearchValue} />
-  );
+  return <SearchBarView value={searchValue} handleChange={updateSearchValue} />;
 };
 
-const mapDispatchToPros = dispatch => {
-  return {
-    updateSearchValue: (newValue) => dispatch(updateSearchValue(newValue)),
-    resetSearchValue: () => dispatch(resetSearchValue())
-  };
+SearchBarContainer.propTypes = {
+  searchValue: PropTypes.string.isRequired
 };
 
-const mapStateToProps = state => ({
-  searchValue: getSearchValue(state)
+const mapDispatchToPros = dispatch => ({
+  updateSearchValue: newValue => dispatch(updateSearchValue(newValue)),
+  resetSearchValue: () => dispatch(resetSearchValue())
 });
 
+const mapStateToProps = state => ({
+  searchValue: getSearchValueSelector(state)
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToPros
-)(SearchBar);
+)(SearchBarContainer);
