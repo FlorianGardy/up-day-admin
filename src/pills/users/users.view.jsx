@@ -13,7 +13,6 @@ const DELETE_LABEL = "Supprimer";
 // const EMAIL_LABEL = "E-mail";
 
 const UserView = ({ users, deleteUser, ownUuid }) => {
-  console.log("TCL: UserView -> ownUuid", ownUuid);
   return (
     <div style={tableStyle}>
       <Table>
