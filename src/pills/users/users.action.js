@@ -19,6 +19,7 @@ export function handleDeleteUser(uuid) {
   return async dispatch => {
     await deleteUser(uuid);
     const userList = await getUsers();
+    userList.reverse();
     dispatch(updateUsersList(userList));
   };
 }

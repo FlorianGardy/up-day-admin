@@ -10,8 +10,8 @@ const REFUSE = "non";
 const DeleteModal = ({ deleteUser, name, uuid }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleCloseWithDelete = async uuid => {
-    await deleteUser(uuid);
+  const handleCloseWithDelete = uuid => {
+    deleteUser(uuid);
     setModalOpen(false);
   };
 
