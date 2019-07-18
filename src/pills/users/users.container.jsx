@@ -7,11 +7,13 @@ import { clearUserEvents } from "../userInfo/userInfo.action";
 import { getUsersListSelector } from "./users.selector";
 import { getSearchValueSelector } from "../searchBar/searchBar.selector";
 import UserView from "./users.view";
+import { getUuidSelector } from "../login/login.selector";
 
 const UsersContainer = ({
   updateUserList,
   handleDeleteUser,
   users,
+  uuid,
   searchValue,
   clearUserEvents
 }) => {
@@ -26,6 +28,7 @@ const UsersContainer = ({
 
   return (
     <UserView
+      ownUuid={uuid}
       users={filteredUsers}
       deleteUser={uuid => handleDeleteUser(uuid)}
     />
@@ -47,6 +50,7 @@ const mapDispatchToPros = dispatch => {
 
 const mapStateToProps = state => ({
   users: getUsersListSelector(state),
+  uuid: getUuidSelector(state),
   searchValue: getSearchValueSelector(state)
 });
 
