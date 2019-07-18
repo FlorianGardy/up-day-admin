@@ -13,7 +13,16 @@ const isAdminColor = role => {
   }
 };
 
-const UserTab = ({ name, uuid, createdAt, token, role, deleteUser, email }) => {
+const UserTab = ({
+  name,
+  uuid,
+  createdAt,
+  token,
+  role,
+  deleteUser,
+  email,
+  ownUuid
+}) => {
   const nameStyle = isAdminColor(role);
 
   return (
@@ -29,11 +38,15 @@ const UserTab = ({ name, uuid, createdAt, token, role, deleteUser, email }) => {
         {/* This input have been disable because of personal data problematique */}
         {/* <Table.Cell>{email ? email : "non communiqué"}</Table.Cell> */}
         <Table.Cell>
-          <DeleteModal
-            name={name}
-            uuid={uuid}
-            deleteUser={() => deleteUser(uuid)}
-          />
+          {uuid === ownUuid ? (
+            ""
+          ) : (
+            <DeleteModal
+              name={name}
+              uuid={uuid}
+              deleteUser={() => deleteUser(uuid)}
+            />
+          )}
         </Table.Cell>
       </Table.Row>
     </Table.Body>

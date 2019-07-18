@@ -12,7 +12,7 @@ const CREATED_AT_LABEL = "Date de création";
 const DELETE_LABEL = "Supprimer";
 // const EMAIL_LABEL = "E-mail";
 
-const UserView = ({ users, deleteUser }) => {
+const UserView = ({ users, deleteUser, ownUuid }) => {
   return (
     <div style={tableStyle}>
       <Table>
@@ -26,7 +26,12 @@ const UserView = ({ users, deleteUser }) => {
           </Table.Row>
         </Table.Header>
         {users.map((user, i) => (
-          <UserTab key={i} {...user} deleteUser={uuid => deleteUser(uuid)} />
+          <UserTab
+            key={i}
+            {...user}
+            deleteUser={uuid => deleteUser(uuid)}
+            ownUuid={ownUuid}
+          />
         ))}
       </Table>
     </div>

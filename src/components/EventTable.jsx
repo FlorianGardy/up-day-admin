@@ -40,7 +40,7 @@ const NO_COMMENT_TEXT = "Pas de commentaire";
 const EventTable = ({ date, type, nature, context, volume, comment }) => {
   let colorTable = switchColorTable(nature);
   return (
-    <Table style={tableStyle} compact size="small" color={colorTable}>
+    <Table style={tableStyle} fixed compact size="small" color={colorTable}>
       <Table.Header>
         <Table.Row textAlign="center">
           <Table.HeaderCell>{date}</Table.HeaderCell>
