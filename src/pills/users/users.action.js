@@ -10,6 +10,7 @@ export const updateUsersList = usersList => {
 export function getUsersList() {
   return async dispatch => {
     const userList = await getUsers();
+    userList.reverse();
     dispatch(updateUsersList(userList));
   };
 }

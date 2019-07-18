@@ -20,9 +20,9 @@ const UsersContainer = ({
     clearUserEvents();
   }, [updateUserList, clearUserEvents]);
 
-  const filteredUsers = users
-    .filter(user => user.name.toLowerCase().includes(searchValue.toLowerCase()))
-    .reverse();
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <UserView
