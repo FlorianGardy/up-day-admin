@@ -11,7 +11,7 @@ const gridColumnStyle = { maxWidth: "450px" };
 const logoStyle = { width: "30%" };
 const titleStyle = { fontSize: "3rem", fontWeight: "bold", color: "#243330" };
 const subTitleStyle = { fontSize: "1.5rem" };
-const submitButtonStyle = { backgroundColor: "#243330" };
+const submitButtonStyle = { backgroundColor: "#243330", color: "white" };
 
 const TITLE = "UP Day Admin";
 const SUBTITLE = "Bienvenue sur votre espace administrateur";
@@ -21,7 +21,7 @@ const PASSWORD_PLACEHOLDER = "Mot de passe";
 const switchErrorMessage = statusCode => {
   switch (statusCode) {
     case 400:
-      return "Identifiant ou mot de passe incorrecte";
+      return "Identifiant ou mot de passe incorrect";
     case 403:
       return "l'utilisateur n'est pas admin";
     default:
@@ -60,7 +60,6 @@ const LoginView = ({ onSubmit, statusCode }) => {
             />
             <Button
               fluid
-              inverted
               type="submit"
               style={submitButtonStyle}
               size="large"
