@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -13,15 +13,6 @@ const LoginContainer = ({
   userUuid,
   statusCode
 }) => {
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      const { uuid, name, email, token } = JSON.parse(
-        localStorage.getItem("user")
-      );
-      updateUser(uuid, name, email, token);
-    }
-  }, [updateUser, userUuid]);
-
   const handleSubmit = e => {
     e.preventDefault();
     let username = e.target.username.value;
