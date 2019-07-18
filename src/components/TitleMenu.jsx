@@ -1,13 +1,28 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon, Dropdown } from "semantic-ui-react";
 
 import { getNameSelector } from "../pills/login/login.selector";
+import handleSignOut from "../API/handleSignOut";
 
 const TITLE = "UP Day Administration";
-const menuStyle = {backgroundColor:"#243330"}
+const menuStyle = { backgroundColor: "#243330" };
+
+const options = [
+  {
+    key: "sign-out",
+    text: "Se déconnecter",
+    icon: "sign out",
+    onClick: handleSignOut
+  }
+];
 
 const TitleMenu = ({ name }) => {
+  if (!localStorage.getItem("user")) {
+    return <Redirect to="/users" />;
+  }
+
   return (
     <Menu inverted style={menuStyle}>
       <Menu.Item header>
@@ -15,17 +30,24 @@ const TitleMenu = ({ name }) => {
         {TITLE}
       </Menu.Item>
       <Menu.Item name="AdminUser" position="right">
-        <Icon circular inverted color="orange" name="user md" />
-        {name}
+        <Dropdown
+          trigger={
+            <>
+              <Icon circular inverted color="orange" name="user md" />
+              {name}
+            </>
+          }
+          options={options}
+          pointing="top right"
+          icon={null}
+        />
       </Menu.Item>
     </Menu>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    name: getNameSelector(state)
-  };
-};
+const mapStateToProps = state => ({
+  name: getNameSelector(state)
+});
 
 export default connect(mapStateToProps)(TitleMenu);
