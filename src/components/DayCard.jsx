@@ -30,8 +30,6 @@ const eventStyle = {
   padding: "0"
 };
 
-const TITLE = "Récapitulatif";
-
 const DayCard = ({ day }) => {
   const { date, events, natureCounter } = day;
   const natureEntries = Object.entries(natureCounter);
@@ -51,11 +49,7 @@ const DayCard = ({ day }) => {
           inverted
         >
           <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell colSpan={natureEntries.length}>
-                {TITLE}
-              </Table.HeaderCell>
-            </Table.Row>
+            <Table.Row />
           </Table.Header>
           <Table.Body>
             <Table.Row>
