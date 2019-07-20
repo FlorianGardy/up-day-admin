@@ -62,6 +62,9 @@ const _arrDaysWithCountedNature = events => {
   events.map(day => {
     return day.events.reduce((a, e) => {
       let eventNature = e.nature;
+      if (day[natureCounter][eventNature] === undefined) {
+        day[natureCounter][eventNature] = 0;
+      }
       return day[natureCounter][eventNature]++;
     }, 0);
   });
