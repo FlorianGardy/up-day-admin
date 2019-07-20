@@ -54,14 +54,16 @@ const DayCard = ({ day }) => {
           <Table.Body>
             <Table.Row>
               {natureEntries.map(([label, count], i) => (
-                <Table.Cell key={i}>{`${label}${
+                <Table.Cell width="1" key={i}>{`${label}${
                   count > 1 ? "s" : ""
                 }`}</Table.Cell>
               ))}
             </Table.Row>
             <Table.Row>
               {natureEntries.map(([label, count], i) => (
-                <Table.Cell key={i}>{count}</Table.Cell>
+                <Table.Cell width="1" key={i}>
+                  {count}
+                </Table.Cell>
               ))}
             </Table.Row>
           </Table.Body>
