@@ -28,10 +28,15 @@ App
 ```
 
 `API` Folder to stock api call functions
+
 `components` Folder to stock simple components
+
 `assets` Folder to stock assets for the app
+
 `pages` Folder to stock components called only in router
+
 `pills` Folder to stock complex connected components
+
 
 `How work pills folder` :
 
