@@ -3,12 +3,9 @@
 UP Day is an application dedicated to physiotherapist re-education of the perineum, to track micturition events from there patient.
 There is 3 parts on this project :
 
-- [Doctors](https://github.com/WildCodeSchool/biarritz_0319_kine_admin) <- You are here
-  -- Add users and track events
-- [Patients](https://github.com/WildCodeSchool/biarritz_0319_kine_front)
-  -- Add and track their own events
-- [Server](https://github.com/WildCodeSchool/biarritz_0319_kine_back)
-  -- Link between front and database
+- [Doctors](https://github.com/WildCodeSchool/biarritz_0319_kine_admin) <- You are here - Add users and track events
+- [Patients](https://github.com/WildCodeSchool/biarritz_0319_kine_front) - Add and track their own events
+- [Server](https://github.com/WildCodeSchool/biarritz_0319_kine_back) - Link between front and database
 
 ## Stack
 
