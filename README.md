@@ -73,8 +73,11 @@ You can now create new users for your application.
 ## Data privacy || IMPORTANT
 
 This application create a problem with personnal data.
+
 You `do not must create an account with real information` about users of the application.
+
 Because of this problematique, we 'kill' code for e-mail information. The code still present, but not accessible to users, and must not be before the database is secure.
+
 (cf: privacy politic about medical data).
 
 ## Deployement
