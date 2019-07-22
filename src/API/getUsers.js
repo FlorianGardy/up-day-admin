@@ -5,8 +5,8 @@ import { manageError } from "./manageErrors";
 
 const dataSelection = response => {
   return response.data.map(d => {
-    let { created_at, email, name, role, token, updated_at, uuid } = d;
-    return { created_at, email, name, role, token, updated_at, uuid };
+    let { createdAt, email, name, role, token, updatedAt, uuid } = d;
+    return { createdAt, email, name, role, token, updatedAt, uuid };
   });
 };
 
