@@ -4,16 +4,6 @@ export const getUserEventsSelector = state => state.UserEvents.userEvents;
 
 export const getUserNameSelector = state => state.UserEvents.userName;
 
-//TODO : test it
-
-export const getUserEventsGroupedByDay = state => {
-  const events = getUserEventsSelector(state);
-
-  return _sortDaysByDate(
-    _arrDaysWithCountedNature(_arrayOfDays(_eventsGroupedByDay(events)))
-  );
-};
-
 const _eventsGroupedByDay = events =>
   events.reduce((r, e) => {
     // RegExp to get day, month and year
@@ -35,13 +25,11 @@ const _eventsGroupedByDay = events =>
   }, {});
 
 const _sortDaysByDate = daysList => {
-  daysList.sort((a, b) => {
+  return daysList.sort((a, b) => {
     a = new Date(a.date);
     b = new Date(b.date);
     return a > b ? -1 : a < b ? 1 : 0;
   });
-
-  return daysList;
 };
 
 const _arrayOfDays = dictionary => {
@@ -54,20 +42,42 @@ const _arrayOfDays = dictionary => {
   return events;
 };
 
+// TODO : replace magic string by automatic initialsation
+const _arrDaysWithEmptyCounter = events => {
+  const natureCounter = "natureCounter";
+  const natureNames = ["Boisson", "Défécation", "Miction", "Sport"];
+  return events.map(day => {
+    return day.events.reduce((a, e) => {
+      if (day[natureCounter] === undefined) {
+        day[natureCounter] = {};
+      }
+      natureNames.map(natureName => (day[natureCounter][natureName] = 0));
+      return day;
+    }, {});
+  });
+};
+
 const _arrDaysWithCountedNature = events => {
-  const natureCount = "natureCounter";
+  const natureCounter = "natureCounter";
   events.map(day => {
     return day.events.reduce((a, e) => {
       let eventNature = e.nature;
-      if (day[natureCount] === undefined) {
-        day[natureCount] = {};
+      if (day[natureCounter][eventNature] === undefined) {
+        day[natureCounter][eventNature] = 0;
       }
-      if (day[natureCount][eventNature] === undefined) {
-        day[natureCount][eventNature] = 0;
-      }
-      return day[natureCount][eventNature]++;
+      return day[natureCounter][eventNature]++;
     }, 0);
   });
-
   return events;
+};
+
+//TODO : test it
+export const getUserEventsGroupedByDay = state => {
+  const events = getUserEventsSelector(state);
+
+  return _sortDaysByDate(
+    _arrDaysWithCountedNature(
+      _arrDaysWithEmptyCounter(_arrayOfDays(_eventsGroupedByDay(events)))
+    )
+  );
 };
